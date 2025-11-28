@@ -11,30 +11,13 @@ def scrape_product(url: str): #async def
 
     soup = BeautifulSoup(html, 'html.parser')
 
-    prod_title = _get_prod_title(soup)
-    prod_img = _get_prod_img(soup)
     prod_price = _get_prod_price(soup)
     prod_sale = _get_prod_sale(soup)
 
     return {
-        "title": prod_title,
         "price": prod_price,
         "sale": prod_sale,
-        "img": prod_img,
-        "url": url
     }
-
-def _get_prod_title(soup):
-    title_element = soup.find('h1', class_='Text--q06h0j iYVnhg h2text StyledDesktopTitle-sc-1naplf-2 dpwvdE')
-    if not title_element:
-        raise Exception("Title not found")
-    return title_element.text.strip()
-
-def _get_prod_img(soup):
-    og_image = soup.find("meta", property="og:image")
-    if og_image and og_image.get("content"):
-        return og_image["content"]
-    return None
 
 def _get_prod_price(soup):
     price_element = soup.find('h4', class_='Text--q06h0j gxjLMM h4text StyledPriceLabel-sc-1iq0wa2-2 coORKe')
@@ -47,8 +30,6 @@ def _get_prod_price(soup):
 def _get_prod_sale(soup):
     sale_element = soup.find('span', class_='Text--q06h0j ftkWDj StyledText--2v1apx beZcjd')
     return bool(sale_element)
-
-
 
 if __name__ == "__main__":
     prod = scrape_product("https://www.prisjakt.no/product.php?p=14365072")

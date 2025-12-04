@@ -2,27 +2,35 @@ import httpx
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, parse_qs
 
-def scrape_product(url: str): #async def
-    with httpx.Client() as client: #async with, .AsyncClient()
+async def scrape_product(url: str): #async def
+    async with httpx.AsyncClient() as client: #async with, .AsyncClient()
         headers = {"User-Agent": "Mozilla/5.0"}
-        response = client.get(url, headers=headers) #await client.
+        response = await client.get(url, headers=headers) #await client.
         response.raise_for_status()
         html = response.text
 
     soup = BeautifulSoup(html, 'html.parser')
 
+    prod_id = _extract_product_id(url)
     prod_title = _get_prod_title(soup)
     prod_img = _get_prod_img(soup)
     prod_price = _get_prod_price(soup)
     prod_sale = _get_prod_sale(soup)
 
     return {
+        "id": prod_id,
         "title": prod_title,
         "price": prod_price,
         "sale": prod_sale,
         "img": prod_img,
         "url": url
     }
+
+def _extract_product_id(url):
+    parsed_url = urlparse(url)
+    query_params = parse_qs(parsed_url.query)
+    product_id = query_params.get('p', [None])[0]
+    return int(product_id) if product_id is not None else None
 
 def _get_prod_title(soup):
     title_element = soup.find('h1', class_='Text--q06h0j iYVnhg h2text StyledDesktopTitle-sc-1naplf-2 dpwvdE')
@@ -50,6 +58,6 @@ def _get_prod_sale(soup):
 
 
 
-if __name__ == "__main__":
-    prod = scrape_product("https://www.prisjakt.no/product.php?p=14365072")
-    print(prod)
+# if __name__ == "__main__":
+#     prod = scrape_product("https://www.prisjakt.no/product.php?p=14365072")
+#     print(prod)

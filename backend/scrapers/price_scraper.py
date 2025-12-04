@@ -11,13 +11,21 @@ def scrape_product(url: str): #async def
 
     soup = BeautifulSoup(html, 'html.parser')
 
+    prod_id = _extract_product_id(url)
     prod_price = _get_prod_price(soup)
     prod_sale = _get_prod_sale(soup)
 
     return {
+        "prod_id": prod_id,
         "price": prod_price,
         "sale": prod_sale,
     }
+
+def _extract_product_id(url):
+    parsed_url = urlparse(url)
+    query_params = parse_qs(parsed_url.query)
+    product_id = query_params.get('p', [None])[0]
+    return int(product_id) if product_id is not None else None
 
 def _get_prod_price(soup):
     price_element = soup.find('h4', class_='Text--q06h0j gxjLMM h4text StyledPriceLabel-sc-1iq0wa2-2 coORKe')

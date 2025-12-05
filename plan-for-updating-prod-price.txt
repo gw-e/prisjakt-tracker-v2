@@ -1,2 +1,4 @@
 Dele opp bach update utover dagen i stedet ved å ha en last_updated i price_log og hvis den 
 e gamlere enn 24h så oppdaterer den prisen. Løser problemet med mange requests på en gang.
+
+2025-12-04T09:33:11.246+00:00

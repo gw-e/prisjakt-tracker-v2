@@ -14,6 +14,7 @@ db = Database()
 async def read_root():
     return "heha"
 
+
 @app.get("/v1/scrape")
 async def scrape(url: str = Query(...)):
     try:
@@ -21,7 +22,8 @@ async def scrape(url: str = Query(...)):
         return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
+
+
 @app.post("/v1/product/add")
 async def add_product(product: Product):
     existing_product = await db.get_product_by_id(product.id)
@@ -46,42 +48,24 @@ async def add_product(product: Product):
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-@app.post("/v1/product/update")
-async def update_product(url: str = Body(..., embed=True)):
-    # 1) Scrape product
-    scraped = await scrape_product(url)
-    prod_id = scraped["id"]
-
-    # 2) Check if product exists
+@app.put("/v1/product/update/{prod_id}")
+async def update_prod(prod_id: int = Path(..., description="Product ID to update")):
     existing_product = await db.get_product_by_id(prod_id)
     if not existing_product:
-        raise HTTPException(status_code=404, detail="Product not found")
+        raise HTTPException(status_code=404, detail="Product not found!")
+    
+    url = f"https://www.prisjakt.no/product.php?p={prod_id}"
+    scraped = await scrape_product(url)
+    if not scraped:
+        raise HTTPException(status_code=500, detail="Couldn't scrape product!")
+    
+    new_data = Product(**scraped).model_dump()
+    new_data["last_updated"] = datetime.now(timezone.utc)
 
-    # 3) Prepare updated fields
-    updated_data = {
-        "title": scraped["title"],
-        "img": scraped["img"],
-        "price": scraped["price"],
-        "sale": scraped["sale"],
-        "url": scraped["url"],
-        "last_updated": datetime.now(timezone.utc)
-    }
+    updated = await db.update_product(prod_id, new_data)
+    if not updated:
+        raise HTTPException(status_code=500, detail="Database update failed")
 
-    # 4) Update product document (even if nothing changed)
-    updated_product = await db.update_product(prod_id, updated_data)
-
-    # 5) Log price
     price_log = Price_log(
         prod_id=prod_id,
         price=scraped["price"],
@@ -91,5 +75,5 @@ async def update_product(url: str = Body(..., embed=True)):
 
     return {
         "message": "Product updated successfully",
-        "product": updated_product
+        "product": updated
     }

@@ -12,19 +12,8 @@ class Database:
         self.products_collection = self.db["products"]
         self.price_log_collection = self.db["price-log"]
 
-    @staticmethod # vatafak is dis man
-    def serialize_doc(doc: dict):
-            if not doc:
-                return doc
-
-            for key, value in doc.items():
-                if isinstance(value, ObjectId):
-                    doc[key] = str(value)
-            return doc
-    
     async def get_product_by_id(self, id: int):
-        doc = await self.products_collection.find_one({"id": id})
-        return Database.serialize_doc(doc) # dont think i need this
+        return await self.products_collection.find_one({"id": id}, {"_id": 0})
     
     async def insert_product(self, product_data: dict):
         result = await self.products_collection.insert_one(product_data)
@@ -34,16 +23,13 @@ class Database:
         result = await self.price_log_collection.insert_one(log_data)
         return result.inserted_id
 
-
-
     async def update_product(self, prod_id: int, updated_fields: dict):
-        updated = await self.products_collection.find_one_and_update(
+        return await self.products_collection.find_one_and_update(
             {"id": prod_id},
             {"$set": updated_fields},
-            return_document=ReturnDocument.AFTER # wah?
+            return_document=ReturnDocument.AFTER,
+            projection={"_id": 0}
         )
-
-        return Database.serialize_doc(updated)
     
 
     

@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, Query, Depends, Path, Body
 from scrapers.scraper import scrape_product
-from models.models import Product, Price_log
+from models.models import Product, Price_log, Group
 from database import Database
 from typing import Optional, List
 from pymongo import UpdateOne
@@ -76,4 +76,20 @@ async def update_prod(prod_id: int = Path(..., description="Product ID to update
     return {
         "message": "Product updated successfully",
         "product": updated
+    }
+
+
+@app.post("/v1/group/new")
+async def new_group(group: Group):
+    existing_group = await db.get_group_by_name(group.name)
+
+    if existing_group:
+        raise HTTPException(status_code=409, detail="Group already added!")
+    
+    group_data = group.model_dump()
+    result = await db.insert_group(group_data)
+
+    return {
+        "message": "Group added successfully",
+        "inserted_id": str(result)
     }

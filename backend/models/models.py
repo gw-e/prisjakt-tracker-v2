@@ -16,3 +16,7 @@ class Price_log(BaseModel):
     price: int
     sale: bool
     timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class Group(BaseModel):
+    name: str
+    products: list[int] = Field(default_factory=list)

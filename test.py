@@ -1,10 +1,10 @@
 import requests
 
 BASE = "http://127.0.0.1:8000"
-PRODUCT_URL = "https://www.prisjakt.no/product.php?p=14365093"
+PRODUCT_URL = "https://www.prisjakt.no/product.php?p=12406805"
 
 
-def test_update_v2():
+def test():
     print("\n---- SCRAPING ----")
     r = requests.get(f"{BASE}/v1/scrape", params={"url": PRODUCT_URL})
     scraped = r.json()
@@ -22,9 +22,21 @@ def test_update_v2():
     print("Response:", r.json())
 
     print("\n---- ADD GROUP ----")
-    add = requests.post(f"{BASE}/v1/group/new", json={"name": "test group"})
+    add = requests.post(f"{BASE}/v1/group/new", json={"name": "test1"})
     print("Add:", add.status_code, add.text)
+
+    print("\n---- UPDATE GROUP - ADD ----")
+    group_name = "test1"
+    r = requests.put(f"{BASE}/v1/group/{group_name}/add", json=[14365093, 12406805])
+    print("Status:", r.status_code)
+    print("Response:", r.json())
+
+    print("\n---- UPDATE GROUP - REMOVE ----")
+    group_name = "test1"
+    r = requests.put(f"{BASE}/v1/group/{group_name}/remove", json=[14365093, 12406805])
+    print("Status:", r.status_code)
+    print("Response:", r.json())
 
 
 if __name__ == "__main__":
-    test_update_v2()
+    test()

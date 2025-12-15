@@ -19,4 +19,4 @@ class Price_log(BaseModel):
 
 class Group(BaseModel):
     name: str
-    products: list[int] = Field(default_factory=list)
+    products: Optional[list] = []

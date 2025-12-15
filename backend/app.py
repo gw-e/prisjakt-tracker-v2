@@ -93,3 +93,43 @@ async def new_group(group: Group):
         "message": "Group added successfully",
         "inserted_id": str(result)
     }
+
+
+@app.put("/v1/group/{group_name}/add")
+async def add_prod_to_group(group_name: str, products: List[int]):
+    existing_group = await db.get_group_by_name(group_name)
+    if not existing_group:
+        raise HTTPException(status_code=404, detail="Group does not exist!")
+    
+    for prod_id in products:
+        product = await db.get_product_by_id(prod_id)
+        if not product:
+            raise HTTPException(status_code=404, detail=f"Product with ID {prod_id} does not exist")
+        
+    current_product_ids = existing_group.get("products", [])
+    updated_product_ids = list(set(current_product_ids + products))
+
+    await db.update_group(group_name, {"products": updated_product_ids})
+
+    return {
+        "message": f"Added {len(products)} product(s) to group '{group_name}'",
+        "updated_products": updated_product_ids
+    }
+
+
+@app.put("/v1/group/{group_name}/remove")
+async def remove_prod_from_group(group_name: str, products: List[int]):
+    existing_group = await db.get_group_by_name(group_name)
+    if not existing_group:
+        raise HTTPException(status_code=404, detail="Group does not exist!")
+
+    current_product_ids = existing_group.get("products", [])
+
+    updated_product_ids = [pid for pid in current_product_ids if pid not in products]
+
+    await db.update_group(group_name, {"products": updated_product_ids})
+
+    return {
+        "message": f"Removed {len(products)} product(s) from group '{group_name}'",
+        "updated_products": updated_product_ids
+    }

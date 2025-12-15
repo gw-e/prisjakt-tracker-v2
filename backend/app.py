@@ -54,7 +54,7 @@ async def update_prod(prod_id: int = Path(..., description="Product ID to update
     if not existing_product:
         raise HTTPException(status_code=404, detail="Product not found!")
     
-    url = f"https://www.prisjakt.no/product.php?p={prod_id}"
+    url = existing_product["url"]
     scraped = await scrape_product(url)
     if not scraped:
         raise HTTPException(status_code=500, detail="Couldn't scrape product!")

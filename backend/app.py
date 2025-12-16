@@ -133,3 +133,16 @@ async def remove_prod_from_group(group_name: str, products: List[int]):
         "message": f"Removed {len(products)} product(s) from group '{group_name}'",
         "updated_products": updated_product_ids
     }
+
+@app.delete("/v1/group/{group_name}/delete")
+async def delete_group(group_name: str):
+    existing_group = await db.get_group_by_name(group_name)
+    if not existing_group:
+        raise HTTPException(status_code=404, detail="Group does not exist!")
+
+    deleted_group_count = await db.remove_group(group_name)
+
+    return {
+        "message": "Group removed successfully",
+        "deleted_group_count": deleted_group_count,
+    }

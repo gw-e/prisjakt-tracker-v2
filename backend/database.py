@@ -46,5 +46,9 @@ class Database:
         )
         return result.modified_count
     
+    async def remove_group(self, name: str):
+        group_result = await self.groups_collection.delete_one({"name": name})
+        return group_result.deleted_count
+    
 
     

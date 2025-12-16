@@ -134,6 +134,24 @@ async def remove_prod_from_group(group_name: str, products: List[int]):
         "updated_products": updated_product_ids
     }
 
+@app.put("/v1/group/{group_name}/edit")
+async def edit_group(group_name: str, new_data: Group):
+    existing_group = await db.get_group_by_name(group_name)
+    if not existing_group:
+        raise HTTPException(status_code=404, detail="Group does not exist!")
+
+    if new_data.name != group_name:
+        if await db.get_group_by_name(new_data.name):
+            raise HTTPException(status_code=409, detail="A group with the new name already exists!")
+        
+    update_data = new_data.model_dump(exclude_unset=True)
+    updated_count = await db.update_group(group_name, update_data)
+
+    return {
+        "message": f"Group '{group_name}' updated successfully",
+        "updated_count": updated_count
+    }
+
 @app.delete("/v1/group/{group_name}/delete")
 async def delete_group(group_name: str):
     existing_group = await db.get_group_by_name(group_name)

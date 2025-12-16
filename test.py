@@ -37,10 +37,16 @@ def test():
     # print("Status:", r.status_code)
     # print("Response:", r.json())
 
-    print("\n---- DELETE GROUP ----")
+    print("\n---- EDIT GROUP ----")
     group_name = "test1"
-    delete = requests.delete(f"{BASE}/v1/group/{group_name}/delete")
-    print("Add:", delete.status_code, delete.text)
+    r = requests.put(f"{BASE}/v1/group/{group_name}/edit", json={"name": "Test"})
+    print("Status:", r.status_code)
+    print("Response:", r.json())
+
+    # print("\n---- DELETE GROUP ----")
+    # group_name = "test1"
+    # delete = requests.delete(f"{BASE}/v1/group/{group_name}/delete")
+    # print("Add:", delete.status_code, delete.text)
 
 
 if __name__ == "__main__":

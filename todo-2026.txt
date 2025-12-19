@@ -1,0 +1,4 @@
+- add possibility to favorite a product.
+- add remove product endpoint
+- add som get requests
+- add gui

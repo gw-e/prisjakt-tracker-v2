@@ -10,6 +10,7 @@ class Product(BaseModel):
     sale: bool
     url: str
     last_updated: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    favorite: Optional[bool] = False
 
 class Price_log(BaseModel):
     prod_id: int

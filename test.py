@@ -5,24 +5,24 @@ PRODUCT_URL = "https://www.prisjakt.no/product.php?p=14364107"
 
 
 def test():
-    # print("\n---- SCRAPING ----")
-    # r = requests.get(f"{BASE}/v1/scrape", params={"url": PRODUCT_URL})
-    # scraped = r.json()
-    # print("Scraped:", scraped)
+    print("\n---- SCRAPING ----")
+    r = requests.get(f"{BASE}/v1/scrape", params={"url": PRODUCT_URL})
+    scraped = r.json()
+    print("Scraped:", scraped)
 
-    # prod_id = scraped["id"]
+    prod_id = scraped["id"]
 
-    # print("\n---- ADD PRODUCT ----")
-    # add = requests.post(f"{BASE}/v1/product/add", json=scraped)
-    # print("Add:", add.status_code, add.text)
+    print("\n---- ADD PRODUCT ----")
+    add = requests.post(f"{BASE}/v1/product/add", json=scraped)
+    print("Add:", add.status_code, add.text)
 
     # print("\n---- GET PRODUCT ----")
     # get = requests.get(f"{BASE}/v1/product/{prod_id}/get")
-    # print("Get:", get.status_code, get.json())
+    # print("Get:", get.status_code, get.text)
 
-    print("\n---- GET FAVORITE PRODUCT ----")
-    get = requests.get(f"{BASE}/v1/product/favorites")
-    print("Get:", get.status_code, get.text)
+    # print("\n---- GET FAVORITE PRODUCT ----")
+    # get = requests.get(f"{BASE}/v1/product/favorites")
+    # print("Get:", get.status_code, get.text)
 
     print("\n---- GET PRODUCTS ON SALE ----")
     get = requests.get(f"{BASE}/v1/product/sales")

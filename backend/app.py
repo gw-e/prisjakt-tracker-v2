@@ -14,7 +14,6 @@ db = Database()
 async def read_root():
     return "heha"
 
-
 @app.get("/v1/scrape")
 async def scrape(url: str = Query(...)):
     try:
@@ -22,6 +21,13 @@ async def scrape(url: str = Query(...)):
         return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    
+
+@app.get("/v1/product/{prod_id}")
+async def get_product(prod_id: int):
+    product = await db.get_product_by_id(prod_id)
+    return product
+    
 
 
 @app.post("/v1/product/add")
@@ -78,6 +84,23 @@ async def update_prod(prod_id: int = Path(..., description="Product ID to update
         "product": updated
     }
 
+@app.put("/v1/product/{prod_id}/favorite/toggle")
+async def favorite_product(prod_id: int):
+    existing_product = await db.get_product_by_id(prod_id)
+    if not existing_product:
+        raise HTTPException(status_code=404, detail="Product not found!")
+    
+    if not existing_product["favorite"]:
+        new_data = True
+    else:
+        new_data = False
+
+    updated = await db.update_product(prod_id, {"favorite": new_data})
+
+    return {
+        "message": "Product updated successfully",
+        "product": updated
+    }
 
 @app.post("/v1/group/new")
 async def new_group(group: Group):

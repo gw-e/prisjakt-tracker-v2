@@ -39,6 +39,9 @@ class Database:
             projection={"_id": 0}
         )
     
+    # async def update_favorite_product(self, prod_id: int, new_data: bool):
+    #     return
+    
     async def update_group(self, name: str, new_data: dict):
         result = await self.groups_collection.update_one(
             {"name": name},

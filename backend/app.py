@@ -10,9 +10,11 @@ from datetime import datetime, timezone
 app = FastAPI()
 db = Database()
 
+
 @app.get("/")
 async def read_root():
     return "heha"
+
 
 @app.get("/v1/scrape")
 async def scrape(url: str = Query(...)):
@@ -21,13 +23,24 @@ async def scrape(url: str = Query(...)):
         return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
 
-@app.get("/v1/product/{prod_id}")
+
+@app.get("/v1/product/{prod_id}/get")
 async def get_product(prod_id: int):
     product = await db.get_product_by_id(prod_id)
     return product
-    
+
+
+@app.get("/v1/product/favorites")
+async def get_favorites():
+    favorites = await db.get_favorite_products()
+    return favorites
+
+
+@app.get("/v1/product/sales")
+async def get_products_on_sale():
+    sales = await db.get_all_products_on_sale()
+    return sales
 
 
 @app.post("/v1/product/add")
@@ -84,6 +97,7 @@ async def update_prod(prod_id: int = Path(..., description="Product ID to update
         "product": updated
     }
 
+
 @app.put("/v1/product/{prod_id}/favorite/toggle")
 async def favorite_product(prod_id: int):
     existing_product = await db.get_product_by_id(prod_id)
@@ -101,6 +115,7 @@ async def favorite_product(prod_id: int):
         "message": "Product updated successfully",
         "product": updated
     }
+
 
 @app.post("/v1/group/new")
 async def new_group(group: Group):
@@ -157,6 +172,7 @@ async def remove_prod_from_group(group_name: str, products: List[int]):
         "updated_products": updated_product_ids
     }
 
+
 @app.put("/v1/group/{group_name}/edit")
 async def edit_group(group_name: str, new_data: Group):
     existing_group = await db.get_group_by_name(group_name)
@@ -175,6 +191,7 @@ async def edit_group(group_name: str, new_data: Group):
         "updated_count": updated_count
     }
 
+
 @app.delete("/v1/group/{group_name}/delete")
 async def delete_group(group_name: str):
     existing_group = await db.get_group_by_name(group_name)
@@ -186,4 +203,21 @@ async def delete_group(group_name: str):
     return {
         "message": "Group removed successfully",
         "deleted_group_count": deleted_group_count,
+    }
+
+@app.delete("/v1/product/{prod_id}/delete")
+async def delete_product(prod_id: int):
+    existing_product = await db.get_product_by_id(prod_id)
+    if not existing_product:
+        raise HTTPException(status_code=404, detail="Product not found!")
+
+    deleted_product_count = await db.remove_product(prod_id)
+    deleted_price_logs_count = await db.remove_price_logs_for_product(prod_id)
+    updated_groups_count = await db.remove_product_from_all_groups(prod_id)
+
+    return {
+        "message": "Product deleted successfully",
+        "deleted_product_count": deleted_product_count,
+        "deleted_price_logs_count": deleted_price_logs_count,
+        "groups_updated": updated_groups_count,
     }

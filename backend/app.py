@@ -205,6 +205,7 @@ async def delete_group(group_name: str):
         "deleted_group_count": deleted_group_count,
     }
 
+
 @app.delete("/v1/product/{prod_id}/delete")
 async def delete_product(prod_id: int):
     existing_product = await db.get_product_by_id(prod_id)

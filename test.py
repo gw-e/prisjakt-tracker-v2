@@ -15,7 +15,8 @@ def test():
     r = requests.get(f"{BASE}/v2/scrape", params={"url": PRODUCT_URL})
     scraped = r.json()
     print("Scraped:", scraped)
-    # prod_id = scraped["id"]
+
+    prod_id = scraped["id"]
 
     # print("\n---- ADD PRODUCT ----")
     # add = requests.post(f"{BASE}/v1/product/add", json=scraped)
@@ -33,10 +34,10 @@ def test():
     # get = requests.get(f"{BASE}/v1/product/sales")
     # print("Get:", get.status_code, get.text)
 
-    # print("\n---- UPDATE PRODUCT ----")
-    # r = requests.put(f"{BASE}/v1/product/update/{prod_id}")
-    # print("Status:", r.status_code)
-    # print("Response:", r.json())
+    print("\n---- UPDATE PRODUCT ----")
+    r = requests.put(f"{BASE}/v1/product/update/{prod_id}")
+    print("Status:", r.status_code)
+    print("Response:", r.json())
 
     # print("\n---- FAVORITE PRODUCT ----")
     # r = requests.put(f"{BASE}/v1/product/{prod_id}/favorite/toggle")

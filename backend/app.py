@@ -67,7 +67,8 @@ async def add_product(product: Product):
         price_log = Price_log(
             prod_id=product.id,
             price=product.price,
-            sale=product.sale
+            sale=product.sale,
+            current_store=product.stores[0]["store"]
         )
         await db.insert_price_log(price_log.model_dump())
 
@@ -84,7 +85,7 @@ async def update_prod(prod_id: int = Path(..., description="Product ID to update
         raise HTTPException(status_code=404, detail="Product not found!")
     
     url = existing_product["url"]
-    scraped = await scrape_product(url)
+    scraped = scrape_product_v2(url)
     if not scraped:
         raise HTTPException(status_code=500, detail="Couldn't scrape product!")
     
@@ -98,7 +99,8 @@ async def update_prod(prod_id: int = Path(..., description="Product ID to update
     price_log = Price_log(
         prod_id=prod_id,
         price=scraped["price"],
-        sale=scraped["sale"]
+        sale=scraped["sale"],
+        current_store=scraped["stores"][0]["store"]
     )
     await db.insert_price_log(price_log.model_dump())
 

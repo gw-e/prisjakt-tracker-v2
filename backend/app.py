@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException, Query, Depends, Path, Body
 from scrapers.scraper import scrape_product
+from scrapers.scraper_v2 import scrape_v2
 from models.models import Product, Price_log, Group
 from database import Database
 from typing import Optional, List
@@ -20,6 +21,15 @@ async def read_root():
 async def scrape(url: str = Query(...)):
     try:
         data = await scrape_product(url)
+        return data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+
+@app.get("/v2/scrape")
+def scrape_product_v2(url: str = Query(...)):
+    try:
+        data = scrape_v2(url)
         return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -68,7 +68,7 @@ async def add_product(product: Product):
             prod_id=product.id,
             price=product.price,
             sale=product.sale,
-            current_store=product.stores[0]["store"]
+            current_store=product.stores[0]["store"] if len(product.stores) != 0 else None
         )
         await db.insert_price_log(price_log.model_dump())
 
@@ -100,7 +100,7 @@ async def update_prod(prod_id: int = Path(..., description="Product ID to update
         prod_id=prod_id,
         price=scraped["price"],
         sale=scraped["sale"],
-        current_store=scraped["stores"][0]["store"]
+        current_store=scraped["stores"][0]["store"] if len(scraped["stores"]) != 0 else None
     )
     await db.insert_price_log(price_log.model_dump())
 

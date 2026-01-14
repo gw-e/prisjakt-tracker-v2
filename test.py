@@ -18,9 +18,9 @@ def test():
 
     prod_id = scraped["id"]
 
-    # print("\n---- ADD PRODUCT ----")
-    # add = requests.post(f"{BASE}/v1/product/add", json=scraped)
-    # print("Add:", add.status_code, add.text)
+    print("\n---- ADD PRODUCT ----")
+    add = requests.post(f"{BASE}/v1/product/add", json=scraped)
+    print("Add:", add.status_code, add.text)
 
     # print("\n---- GET PRODUCT ----")
     # get = requests.get(f"{BASE}/v1/product/{prod_id}/get")

@@ -63,14 +63,13 @@ async def add_product(product: Product):
     product_data = product.model_dump()
     result = await db.insert_product(product_data)
 
-    if product.price is not None:
-        price_log = Price_log(
-            prod_id=product.id,
-            price=product.price,
-            sale=product.sale,
-            current_store=product.stores[0]["store"] if len(product.stores) != 0 else None
-        )
-        await db.insert_price_log(price_log.model_dump())
+    price_log = Price_log(
+        prod_id=product.id,
+        price=product.price,
+        sale=product.sale,
+        current_store=product.stores[0]["store"] if len(product.stores) != 0 else None
+    )
+    await db.insert_price_log(price_log.model_dump())
 
     return {
         "message": "Product added successfully",

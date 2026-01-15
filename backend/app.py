@@ -8,16 +8,29 @@ from pymongo import UpdateOne
 import asyncio
 from datetime import datetime, timezone
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 db = Database()
 
 template = Jinja2Templates(directory="../frontend/templates")
 
+app.mount(
+    "/static",
+    StaticFiles(directory="../frontend/static"),
+    name="static",
+)
+
 @app.get("/")
 async def on_load(request: Request):
     products = await db.get_all_products()
-    return template.TemplateResponse("index.html", {"request": request, "products": products})
+    return template.TemplateResponse(
+        "home.html", 
+        {
+            "request": request, 
+            "products": products,
+        }
+    )
 
 
 @app.get("/favorites")

@@ -3,14 +3,30 @@ from scrapers.scraper import scrape_product
 from scrapers.scraper_v2 import scrape_v2
 from models.models import Product, Price_log, Group
 from database import Database
+from product_update_check import product_update_interval
 from typing import Optional, List
 from pymongo import UpdateOne
 import asyncio
 from datetime import datetime, timezone
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from contextlib import asynccontextmanager
 
-app = FastAPI()
+#error where favorite gets false on update even if it was true.
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    task = asyncio.create_task(product_update_interval(False))
+    yield
+    task.cancel()
+    try:
+        await task
+    except asyncio.CancelledError:
+        pass
+
+
+app = FastAPI(lifespan=lifespan)
 db = Database()
 
 template = Jinja2Templates(directory="../frontend/templates")
@@ -69,6 +85,9 @@ async def get_product(prod_id: int):
     product = await db.get_product_by_id(prod_id)
     return product
 
+@app.get("/v1/products")
+async def get_products():
+    return await db.get_all_products()
 
 @app.get("/v1/product/favorites")
 async def get_favorites():

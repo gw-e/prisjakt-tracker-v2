@@ -14,8 +14,16 @@ class Database:
 
 
     async def get_product_by_id(self, id: int):
-        return await self.products_collection.find_one({"id": id}, {"_id": 0})
+            return await self.products_collection.find_one({"id": id}, {"_id": 0})
     
+    async def get_group_by_name(self, name: str):
+        return await self.groups_collection.find_one({"name": name}, {"_id": 0})
+    
+    async def get_all_products(self):
+        products = self.products_collection.find({}, {"_id": 0})
+        products = await products.to_list(length=1000) 
+        return products
+
     async def get_favorite_products(self):
         favorites = self.products_collection.find({"favorite": True}, {"_id": 0})
         favorites = await favorites.to_list(1000)
@@ -26,8 +34,6 @@ class Database:
         on_sale = await on_sale.to_list(1000)
         return on_sale
     
-    async def get_group_by_name(self, name: str):
-        return await self.groups_collection.find_one({"name": name}, {"_id": 0})
     
     async def insert_product(self, product_data: dict):
         result = await self.products_collection.insert_one(product_data)
@@ -40,6 +46,7 @@ class Database:
     async def insert_group(self, group_data: dict):
         result = await self.groups_collection.insert_one(group_data)
         return result.inserted_id
+    
     
     async def update_product(self, prod_id: int, updated_fields: dict):
         return await self.products_collection.find_one_and_update(
@@ -63,6 +70,7 @@ class Database:
         )
         return result.modified_count
     
+
     async def remove_group(self, name: str):
         group_result = await self.groups_collection.delete_one({"name": name})
         return group_result.deleted_count

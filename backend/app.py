@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Query, Depends, Path, Body
+from fastapi import FastAPI, HTTPException, Query, Depends, Path, Body, Request
 from scrapers.scraper import scrape_product
 from scrapers.scraper_v2 import scrape_v2
 from models.models import Product, Price_log, Group
@@ -7,14 +7,30 @@ from typing import Optional, List
 from pymongo import UpdateOne
 import asyncio
 from datetime import datetime, timezone
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 db = Database()
 
+template = Jinja2Templates(directory="../frontend/templates")
 
 @app.get("/")
-async def read_root():
-    return "heha"
+async def on_load(request: Request):
+    products = await db.get_all_products()
+    return template.TemplateResponse("index.html", {"request": request, "products": products})
+
+
+@app.get("/favorites")
+async def favorites(request: Request):
+    products = await db.get_favorite_products()
+    return template.TemplateResponse(
+        "favorites.html",
+        {
+            "request": request,
+            "title": "Favorites",
+            "products": products,
+        }
+    )
 
 
 @app.get("/v1/scrape")

@@ -136,7 +136,11 @@ async def update_prod(prod_id: int = Path(..., description="Product ID to update
     if not scraped:
         raise HTTPException(status_code=500, detail="Couldn't scrape product!")
     
-    new_data = Product(**scraped).model_dump()
+    preserved_fields = {
+        "favorite": existing_product.get("favorite", False)
+    }
+
+    new_data = Product(**scraped, **preserved_fields).model_dump()
     new_data["last_updated"] = datetime.now(timezone.utc)
 
     updated = await db.update_product(prod_id, new_data)

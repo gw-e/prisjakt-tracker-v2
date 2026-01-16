@@ -8,7 +8,6 @@ async def product_update_interval(on=True):
         return
     
     url = "http://127.0.0.1:8000"
-    # current_date = datetime.now(timezone.utc)
 
     async with httpx.AsyncClient() as client:
         while True:
@@ -22,7 +21,6 @@ async def product_update_interval(on=True):
 
                 for prod in not_updated:
                     response = await client.put(f"{url}/v1/product/update/{prod["id"]}")
-                    print(response.text)
 
 
             except Exception as e:
@@ -49,7 +47,3 @@ def _not_updated_products(products):
             result.append(prod)
 
     return result
-
-
-# def _update_prod(prod_id):
-#     pass

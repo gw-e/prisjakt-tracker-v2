@@ -12,8 +12,6 @@ from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 
-#error where favorite gets false on update even if it was true.
-
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

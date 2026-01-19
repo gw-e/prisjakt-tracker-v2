@@ -2,9 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import json
+import httpx
 
-def scrape_v2(url):
-    data = _fetch_prefetch_json(url)
+async def scrape_v2(url):
+    data = await _fetch_prefetch_json(url)
     prod_data = data["data"]["product"]
     
     prod_id = prod_data["id"]
@@ -17,6 +18,7 @@ def scrape_v2(url):
     
     prod_properties = prod_data["coreProperties"]["nodes"]
     if prod_properties:
+        # prod_properties = [p["prettyVerbose"] for p in prod_properties]
         prod_props = []
         for prop in prod_properties:
             prod_props.append(prop["prettyVerbose"])
@@ -38,13 +40,17 @@ def scrape_v2(url):
     }
 
 
-def _fetch_prefetch_json(url: str) -> dict:
+async def _fetch_prefetch_json(url: str) -> dict:
     headers = {
         "User-Agent": "Mozilla/5.0"
     }
 
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()
+    async with httpx.AsyncClient(headers=headers, timeout=15) as client:
+        response = await client.get(url)
+        response.raise_for_status()
+
+    # response = requests.get(url, headers=headers)
+    # response.raise_for_status()
 
     soup = BeautifulSoup(response.text, "html.parser")
 

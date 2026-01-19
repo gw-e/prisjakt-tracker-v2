@@ -69,10 +69,19 @@ async def scrape(url: str = Query(...)):
         raise HTTPException(status_code=500, detail=str(e))
     
 
+# @app.get("/v2/scrape")
+# def scrape_product_v2(url: str = Query(...)):
+#     try:
+#         data = scrape_v2(url)
+#         return data
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.get("/v2/scrape")
-def scrape_product_v2(url: str = Query(...)):
+async def scrape_product_v2(url: str = Query(...)):
     try:
-        data = scrape_v2(url)
+        data = await scrape_v2(url)
         return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
@@ -130,7 +139,7 @@ async def update_prod(prod_id: int = Path(..., description="Product ID to update
         raise HTTPException(status_code=404, detail="Product not found!")
     
     url = existing_product["url"]
-    scraped = scrape_product_v2(url)
+    scraped = await scrape_product_v2(url)
     if not scraped:
         raise HTTPException(status_code=500, detail="Couldn't scrape product!")
     

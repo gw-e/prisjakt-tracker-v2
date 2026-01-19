@@ -42,6 +42,7 @@ async def on_load(request: Request):
         "home.html", 
         {
             "request": request, 
+            "title": "Products",
             "products": products,
         }
     )

@@ -1,28 +1,76 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>All products</h1>
+<div class="content">
 
-{% if products %}
-<table>
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>price</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for product in products %}
-        <tr>
-            <td>{{ product.id }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.price }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% else %}
-<p>No products yet.</p>
-{% endif %}
+    <h2 style="margin: 0; font-weight: 500;">Dashboard</h2>
+
+    <div class="content-card">
+        <div class="content-card-top">
+            <span style="font-weight: 500;">Products</span>
+        </div>
+        {% if products %}
+        <div class="product-card-container">
+            {% for prod in products %}
+            <div class="product-card">
+                <div class="prod-info-left">
+                    <img src="{{ prod.img }}" alt="{{ prod.name }}"
+                        style="width: 75px; height: 75px; border-radius: 0.5rem;">
+                    <div>
+                        <span>Skjermkort</span>
+                        <h3 style="margin: 0; font-weight: 500;">{{ prod.name }}</h3>
+                        <span>
+                            <!-- {% for prop in prod.properties %}
+                            {{ prop }},
+                            {% endfor %} -->
+                            {{ prod.properties[0] }}
+                        </span>
+                    </div>
+
+                </div>
+                <div class="prod-info-right">
+                    <h3 style="margin: 0; font-weight: 500;">{{ prod.price }}</h3>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+    </div>
+
+    <!-- <div class="content-section">
+        {% if products %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Sale</th>
+                    <th>Discount</th>
+                    <th>Stock</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.sale }}</td>
+                    <td>{{ product.discount }}</td>
+                    <td>{{ product.stock }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No products yet.</p>
+        {% endif %}
+    </div> -->
+
+
+
+</div>
+
+
 {% endblock %}

@@ -1,0 +1,4 @@
+navigation:
+- home (dashboard like)
+- products
+- groups

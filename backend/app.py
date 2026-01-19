@@ -67,15 +67,6 @@ async def scrape(url: str = Query(...)):
         return data
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-    
-
-# @app.get("/v2/scrape")
-# def scrape_product_v2(url: str = Query(...)):
-#     try:
-#         data = scrape_v2(url)
-#         return data
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.get("/v2/scrape")

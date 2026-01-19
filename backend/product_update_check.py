@@ -26,7 +26,7 @@ async def product_update_interval(on=True):
             except Exception as e:
                 print(f"Error: {e}")
 
-            await asyncio.sleep(30)
+            await asyncio.sleep(3600)
 
 
 def _not_updated_products(products):

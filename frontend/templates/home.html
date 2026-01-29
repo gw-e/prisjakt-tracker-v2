@@ -1,11 +1,99 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<!-- <div class="content">
+    <h2>Products</h2>
+
+</div> -->
+
+
+<!-- This is design 1 ish -->
+
 <div class="content">
+    <div class="top-content">
+        <h2 style="margin: 0; font-weight: 500;">Dashboard</h2>
+    </div>
 
-    <h2 style="margin: 0; font-weight: 500;">Dashboard</h2>
+    <div class="content-cards">
+        <div class="metric-card">
+            <span class="metric-card-icon">
 
-    <div class="content-card">
+            </span>
+            <div class="metric-card-info">
+                <span class="metric-card-lable">Price Drops</span>
+                <p class="metric-card-data">42</p>
+            </div>
+        </div>
+        <div class="metric-card">
+            <span class="metric-card-icon">
+
+            </span>
+            <div class="metric-card-info">
+                <span class="metric-card-lable">Wachlist</span>
+                <p class="metric-card-data">42</p>
+            </div>
+        </div>
+        <div class="metric-card">
+            <span class="metric-card-icon">
+
+            </span>
+            <div class="metric-card-info">
+                <span class="metric-card-lable">On Sale</span>
+                <p class="metric-card-data">42</p>
+            </div>
+        </div>
+        <div class="metric-card">
+            <span class="metric-card-icon">
+
+            </span>
+            <div class="metric-card-info">
+                <span class="metric-card-lable">Total Tracked</span>
+                <p class="metric-card-data">42</p>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; gap: 1rem; flex-grow: 1;">
+        <div class="content-main">
+            <div class="content-main-top">
+                <p>Price drops</p>
+            </div>
+            {% if products %}
+            <div class="main-products-container">
+                {% for prod in products %}
+                <div class="main-product-card">
+                    <div class="main-product-info">
+                        <img src="{{ prod.img }}" alt="{{ prod.name }}" class="product-img">
+                        <p style="font-size: 14px; font-weight: 500;">{{ prod.name }}</p>
+                    </div>
+                    <div>
+                        <p>{{ prod.price }},-</p>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>No products</p>
+            {% endif %}
+        </div>
+
+
+
+        <div class="content-main">
+            <p>hehe</p>
+        </div>
+    </div>
+
+
+
+    <div class="content-main">
+        <p>hehe</p>
+    </div>
+
+
+
+    <!-- <div class="content-card">
         <div class="content-card-top">
             <span style="font-weight: 500;">Products</span>
         </div>
@@ -15,28 +103,24 @@
             <div class="product-card">
                 <div class="prod-info-left">
                     <img src="{{ prod.img }}" alt="{{ prod.name }}"
-                        style="width: 75px; height: 75px; border-radius: 0.5rem;">
+                        style="width: 50px; height: 50px; border-radius: 0.5rem;">
                     <div>
-                        <span>Skjermkort</span>
-                        <h3 style="margin: 0; font-weight: 500;">{{ prod.name }}</h3>
+                        <h4 style="margin: 0; font-weight: 500;">{{ prod.name }}</h4>
                         <span>
-                            <!-- {% for prop in prod.properties %}
-                            {{ prop }},
-                            {% endfor %} -->
-                            {{ prod.properties[0] }}
+                            Updated 4h ago
                         </span>
                     </div>
 
                 </div>
                 <div class="prod-info-right">
-                    <h3 style="margin: 0; font-weight: 500;">{{ prod.price }}</h3>
+                    <h4 style="margin: 0; font-weight: 500;">{{ prod.price }}kr -2%</h4>
                 </div>
             </div>
             {% endfor %}
         </div>
         {% endif %}
 
-    </div>
+    </div> -->
 
     <!-- <div class="content-section">
         {% if products %}

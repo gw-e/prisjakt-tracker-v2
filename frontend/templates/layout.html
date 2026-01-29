@@ -10,9 +10,78 @@
 
 <body>
     <nav>
-        <a href="/">Home</a>
-        <a href="/favorites">Favorites</a>
+        <div id="nav-top">
+            <div id="nav-logo">
+                <!-- <span style="display: flex; align-items: center; gap: 0.4rem; font-size: 16px;"> -->
+                <div class="logo">
+                    <!-- <img src="https://pricespy-75b8.kxcdn.com/g/rfe/logos/logo_v2_symbol.png" alt="Prisjakt logo"
+                        id="prisjakt-logo"> -->
+                    <span class="left">Pris</span>
+                    <span class="right">Vakt</span>
+                </div>
+
+                <span>&lt;|</span>
+            </div>
+
+            <!-- <a href="https://www.prisjakt.no/" target="_blank" style="text-decoration: none;">
+                <button class="prisjakt-btn">
+                    <span class="icon">
+                        <img src="https://pricespy-75b8.kxcdn.com/g/rfe/logos/logo_v2_symbol.png" alt="Prisjakt logo"
+                            style="width: 18px; height: 18px;">
+                    </span>
+                    Prisjakt
+                </button>
+            </a> -->
+        </div>
+
+        <div id="nav-main">
+            <span class="lable">Navigate</span>
+            <ul>
+                <li>
+                    <a href="/">
+                        <span class="icon"></span>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="/favorites">
+                        <span class="icon"></span>
+                        Products
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+        <!-- <div id="nav-top">
+            <div id="nav-logo">
+                <a href="https://www.prisjakt.no/" target="_blank">
+                    <img src="https://pricespy-75b8.kxcdn.com/g/rfe/logos/logo_no_v2_light.svg" alt="Prisjakt"
+                        id="prisjakt-img">
+                </a>
+                <span id="nav-logo-span">| Tracker</span>
+            </div>
+
+        </div>
+        <div id="nav-bottom">
+            <div id="nav-link-container">
+                <a class="nav-link active" href="/">Dashboard</a>
+                <a class="nav-link" href="/favorites">Products</a>
+                <a class="nav-link" href="/">Watchlist</a>
+                <a class="nav-link" href="/">Groups</a>
+
+            </div>
+            <div>
+                <a class="nav-link" href="/">Settings</a>
+            </div>
+
+        </div> -->
+        <!-- <a href="/">Home</a>
+        <a href="/favorites">Favorites</a> -->
     </nav>
+
     <main>
         {% block content %}{% endblock %}
     </main>

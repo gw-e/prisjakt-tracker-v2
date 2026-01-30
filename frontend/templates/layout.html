@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title or "Price Tracker" }}</title>
+    <title>{{ title or "Prodnest - Your nest for smarter buying" }}</title>
     <link rel="stylesheet" href="{{ url_for('static', path='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/home.css') }}">
 </head>
 
 <body>
@@ -13,9 +14,9 @@
         <div id="nav-top">
             <div id="nav-logo">
                 <div class="logo">
-                    <span class="left">Prod</span>
-                    <span class="right">Nest</span>
-                    <!-- <span class="right">PL</span> -->
+                    <!-- <span class="left">Prod</span> -->
+                    <!-- <span class="right">Nest</span> -->
+                    <span class="right">Pn</span>
                 </div>
 
                 <span>&lt;|</span>
@@ -36,7 +37,7 @@
             <span class="lable">Navigate</span>
             <ul>
                 <li>
-                    <a href="/">
+                    <a href="/" class="active">
                         <span class="icon"></span>
                         Home
                     </a>
@@ -93,6 +94,24 @@
     </nav>
 
     <main>
+        <div class="note-section">
+            <p class="note"><strong>Note: </strong>ddr5 momory is now facking everyone's pockets, and its driving
+                me
+                crazy!</p>
+            <div>
+                <button>More</button>
+                <button>Dismiss</button>
+            </div>
+
+            <!-- <div class="right">
+                <span class="btn">a</span>
+                <span class="btn">b</span>
+            </div> -->
+
+            <!-- DETTE SKAL VÆRE NOTIFIKASJONER, MED ET IKON TIL VENSTRE OG TEXT TIL HØYRE, 
+             MED DISMISS OG NEXT BUTTON TIL HØYRE. NÅR IKON TRYKKES PÅ SÅ VISES IKKE VARSLINGEN, 
+             OG IKONET VIL KOMME OPP PÅ HØYRESIDEN.-->
+        </div>
         {% block content %}{% endblock %}
     </main>
 </body>

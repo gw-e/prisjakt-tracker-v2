@@ -41,8 +41,8 @@ async def on_load(request: Request):
     return template.TemplateResponse(
         "home.html", 
         {
-            "request": request, 
-            "title": "Products",
+            "request": request,
+            "header": "The Nest Overview",
             "products": products,
         }
     )
@@ -55,7 +55,7 @@ async def favorites(request: Request):
         "favorites.html",
         {
             "request": request,
-            "title": "Favorites",
+            "header": "Nested Products",
             "products": products,
         }
     )

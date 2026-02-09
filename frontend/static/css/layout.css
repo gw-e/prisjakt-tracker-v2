@@ -7,6 +7,7 @@
 body {
 
     display: flex;
+    flex-direction: column;
     margin: 0;
     height: 100vh;
 
@@ -22,14 +23,253 @@ p {
 }
 
 
-nav {
+/* nav {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
     border-right: solid 1px #222;
     font-family: Google Sans;
+} */
+
+nav {
+    border-bottom: solid 1px #222;
+    font-family: Google Sans;
+
+    background-image: url('https://images.unsplash.com/photo-1475257026007-0753d5429e10?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFyayUyMGxlYWZ8ZW58MHx8MHx8fDA%3D');
+    background-image: url('https://wallpapercave.com/wp/wp13952413.jpg');
+
+    background-position: center;
+    background-size: cover;
 }
+
+nav .gradient {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+
+    background: linear-gradient(black, transparent 40%);
+}
+
+.nav-top {
+    /* padding: 1rem 2rem; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    /* background-image: linear-gradient(black, transparent); */
+}
+
+.nav-top .left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.nav-top .left .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 12px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 5px;
+}
+
+.nav-top .left .lable {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+
+
+.nav-main {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.nav-main .left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.nav-main .title {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.navigation ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: #eee;
+}
+
+.navigation li a {
+    text-decoration: none;
+    color: inherit;
+    opacity: 75%;
+}
+
+.navigation li a:hover {
+    opacity: 100%;
+}
+
+.navigation li a.active {
+    opacity: 100%;
+}
+
+
+.nav-main .right {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+/* .nav-main .metric-card {
+    background-color: aqua;
+} */
+
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    width: 100%;
+    gap: 5px;
+
+    padding: 1rem;
+    border-radius: 1rem;
+
+    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    cursor: pointer;
+}
+
+.metric-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    /* background-color: rgba(0, 0, 0, 0.2); */
+}
+
+.metric-card .lable {
+    font-size: 12px;
+    opacity: 80%;
+}
+
+.metric-card .value {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+
+
+
+
+
+/* .nav-left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.nav-left .logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-left .logo .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 12px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 5px;
+}
+
+.nav-left .logo .right {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+.nav-right {
+    width: 100%;
+} */
+
+/* .nav-left .header .logo .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #nav-top {
     display: flex;
@@ -112,13 +352,11 @@ nav {
 
 }
 
-#nav-main {
+/* #nav-main {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    /* padding: 1rem; */
-    /* border-top: solid 1px #222; */
-}
+} */
 
 #nav-main .lable {
     font-size: 10px;
@@ -185,7 +423,7 @@ main {
     height: 35px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     gap: 2rem;
     /* justify-content: center; */

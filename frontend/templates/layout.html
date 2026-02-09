@@ -11,29 +11,118 @@
 
 <body>
     <nav>
-        <div id="nav-top">
+        <div class="gradient">
+            <div class="nav-top">
+                <div class="left">
+                    <span class="lable">Prod</span>
+                    <span class="logo">Nest</span>
+                </div>
+            </div>
+            <div class="nav-main">
+                <div class="left">
+                    <p class="title">The Nest Overview</p>
+
+                    <div class="navigation">
+                        <ul>
+                            <li>
+                                <a href="/" class="active">
+                                    <span class="icon"></span>
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/favorites">
+                                    <span class="icon"></span>
+                                    Products
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/">
+                                    <span class="icon"></span>
+                                    Watchlist
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/">
+                                    <span class="icon"></span>
+                                    Groups
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/">
+                                    <span class="icon"></span>
+                                    Settings
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div class="metric-card">
+                        <span class="lable">Price changes</span>
+                        <p class="value">20</p>
+                    </div>
+                    <div class="metric-card">
+                        <span class="lable">Wachlist</span>
+                        <p class="value">20</p>
+                    </div>
+                    <div class="metric-card">
+                        <span class="lable">Deals</span>
+                        <p class="value">20</p>
+                    </div>
+                    <div class="metric-card">
+                        <span class="lable">Products</span>
+                        <p class="value">20</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <!-- <div class="nav-left">
+            <div class="logo">
+                <span class="left">Pn</span>
+                <span class="right">ProdNest</span>
+
+            </div>
+            <p>The Nest Overview</p>
+            <div class="navigation">
+
+            </div>
+        </div>
+
+        <div class="nav-right">
+
+        </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div id="nav-top">
             <div id="nav-logo">
                 <div class="logo">
-                    <!-- <span class="left">Prod</span> -->
-                    <!-- <span class="right">Nest</span> -->
                     <span class="right">Pn</span>
                 </div>
 
                 <span>&lt;|</span>
             </div>
+        </div> -->
 
-            <!-- <a href="https://www.prisjakt.no/" target="_blank" style="text-decoration: none;">
-                <button class="prisjakt-btn">
-                    <span class="icon">
-                        <img src="https://pricespy-75b8.kxcdn.com/g/rfe/logos/logo_v2_symbol.png" alt="Prisjakt logo"
-                            style="width: 18px; height: 18px;">
-                    </span>
-                    Prisjakt
-                </button>
-            </a> -->
-        </div>
-
-        <div id="nav-main">
+        <!-- <div id="nav-main">
             <span class="lable">Navigate</span>
             <ul>
                 <li>
@@ -61,7 +150,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div> -->
 
 
 
@@ -94,24 +183,15 @@
     </nav>
 
     <main>
-        <div class="note-section">
+        <!-- <div class="note-section">
             <p class="note"><strong>Note: </strong>ddr5 momory is now facking everyone's pockets, and its driving
                 me
                 crazy!</p>
             <div>
-                <button>More</button>
+                <button>View</button>
                 <button>Dismiss</button>
             </div>
-
-            <!-- <div class="right">
-                <span class="btn">a</span>
-                <span class="btn">b</span>
-            </div> -->
-
-            <!-- DETTE SKAL VÆRE NOTIFIKASJONER, MED ET IKON TIL VENSTRE OG TEXT TIL HØYRE, 
-             MED DISMISS OG NEXT BUTTON TIL HØYRE. NÅR IKON TRYKKES PÅ SÅ VISES IKKE VARSLINGEN, 
-             OG IKONET VIL KOMME OPP PÅ HØYRESIDEN.-->
-        </div>
+        </div> -->
         {% block content %}{% endblock %}
     </main>
 </body>

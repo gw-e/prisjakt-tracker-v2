@@ -10,7 +10,7 @@
     /* margin: 5px; */
 }
 
-.metric-cards {
+/* .metric-cards {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -18,13 +18,12 @@
     padding: 0 2rem;
 
     gap: 2rem;
-}
+} */
 
-.metric-cards .card {
+/* .metric-cards .card {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
     gap: 0.1rem;
 
     padding: 0.6rem;
@@ -34,22 +33,37 @@
     border-radius: 10px;
 
     flex-grow: 1;
-}
+} */
 
-.metric-cards .card .lable {
+/* .metric-cards .card .lable {
     font-size: 10px;
     font-weight: 500;
     color: #777;
-}
+} */
 
-.metric-cards .card .value {
+/* .metric-cards .card .value {
     font-size: 24px;
     font-weight: 500;
     color: white;
-}
+} */
 
 .content {
     border-top: solid 1px #222;
+}
+
+.content .header {
+    padding: 3rem;
+
+    background-image: url('https://images.unsplash.com/photo-1475257026007-0753d5429e10?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFyayUyMGxlYWZ8ZW58MHx8MHx8fDA%3D');
+    background-image: url('https://wallpapercave.com/wp/wp13952413.jpg');
+    /* background-image: url('https://wallpapercave.com/wp/wp5865098.jpg'); */
+    /* background-image: url('https://wallpapercave.com/wp/wp13952607.jpg'); */
+
+    background-position: center;
+    background-size: cover;
+    border-bottom: solid 1px #222;
+
+    /* This is the navbar. no vertical navbar. layout: left side: logo, and navigation underneath. right side: metric cards. */
 }
 
 

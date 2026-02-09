@@ -86,13 +86,48 @@ nav .gradient {
     font-weight: bold;
 }
 
+.add-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 20px;
+    gap: 4px;
+    padding: 2px 6px;
+
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Google Sans;
+    color: black;
+    background-color: #fff;
+
+    border-radius: 5px;
+    border: none;
+}
+
+.add-btn .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* width: 15px; */
+    /* height: 15px; */
+
+    font-size: 14px;
+    margin-top: -2px;
+
+    /* font-size: 12px;
+    font-weight: bold;
+    font-family: Google Sans; */
+}
+
 
 
 
 .nav-main {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .nav-main .left {
@@ -118,7 +153,7 @@ nav .gradient {
 
     font-size: 14px;
     font-weight: 500;
-    color: #eee;
+    color: #fff;
 }
 
 .navigation li a {
@@ -140,7 +175,7 @@ nav .gradient {
     width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 /* .nav-main .metric-card {
@@ -165,6 +200,9 @@ nav .gradient {
     border: 1px solid rgba(255, 255, 255, 0.1);
 
     cursor: pointer;
+
+    transition:
+        background-color 0.25s ease
 }
 
 .metric-card:hover {

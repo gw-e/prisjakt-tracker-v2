@@ -55,7 +55,7 @@ async def favorites(request: Request):
         "favorites.html",
         {
             "request": request,
-            "header": "Nested Products",
+            "header": "All Products",
             "products": products,
         }
     )

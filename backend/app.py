@@ -42,7 +42,7 @@ async def on_load(request: Request):
         "home.html", 
         {
             "request": request,
-            "header": "The Nest Overview",
+            "header": "Nest Overview",
             "products": products,
         }
     )

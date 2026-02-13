@@ -1,7 +1,7 @@
 import requests
 
 BASE = "http://127.0.0.1:8000"
-PRODUCT_URL = "https://www.prisjakt.no/product.php?p=14365027"
+PRODUCT_URL = "https://www.prisjakt.no/product.php?p=13949822"
 
 
 def test():
@@ -18,9 +18,9 @@ def test():
 
     prod_id = scraped["id"]
 
-    # print("\n---- ADD PRODUCT ----")
-    # add = requests.post(f"{BASE}/v1/product/add", json=scraped)
-    # print("Add:", add.status_code, add.text)
+    print("\n---- ADD PRODUCT ----")
+    add = requests.post(f"{BASE}/v1/product/add", json=scraped)
+    print("Add:", add.status_code, add.text)
 
     # print("\n---- GET PRODUCT ----")
     # get = requests.get(f"{BASE}/v1/product/{prod_id}/get")
@@ -44,9 +44,9 @@ def test():
     # print("Status:", r.status_code)
     # print("Response:", r.json())
 
-    print("\n---- DELETE PRODUCT ----")
-    delete = requests.delete(f"{BASE}/v1/product/{prod_id}/delete")
-    print("Delete:", delete.status_code, delete.text)
+    # print("\n---- DELETE PRODUCT ----")
+    # delete = requests.delete(f"{BASE}/v1/product/{prod_id}/delete")
+    # print("Delete:", delete.status_code, delete.text)
 
     # print("\n---- NEW GROUP ----")
     # add = requests.post(f"{BASE}/v1/group/new", json={"name": "test3"})

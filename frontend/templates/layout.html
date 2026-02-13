@@ -11,24 +11,13 @@
 
 <body>
     <nav>
-        <div class="gradient">
-            <div class="nav-top">
-                <div class="left">
-                    <span class="lable">Prod</span>
-                    <span class="logo">Nest</span>
-                </div>
-                <!-- This shal be settings icon and notification icon, and maby search icon. maby also a plus icon, with dropdown: add product or group
-                <!-- <div class="right">
-                    <button class="add-btn">
-                        <span class="icon">+</span>
-                        Add Product
-                    </button>
-                </div> -->
-            </div>
-            <div class="nav-main">
-                <div class="left">
-                    <p class="title">{{ header }}</p>
-
+        <div class="nav-main">
+            <div class="nav-main-left">
+                <div class="navbar">
+                    <div class="prodnest-logo">
+                        <span class="left">Prod</span>
+                        <span class="right">Nest</span>
+                    </div>
                     <div class="navigation">
                         <ul>
                             <li>
@@ -44,7 +33,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/">
+                                <a href="/favorites">
                                     <span class="icon"></span>
                                     Watchlist
                                 </a>
@@ -58,29 +47,163 @@
                             <li>
                                 <a href="/">
                                     <span class="icon"></span>
-                                    Apps
+                                    Settings
                                 </a>
                             </li>
                         </ul>
+                        <ul>
+                            <li>
+                                <!-- <a href="/"> -->
+                                <!-- <input type="search" placeholder="Quick search"> -->
+                                <!-- </a> -->
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <button class="add-btn">
+                        <span class="icon">+</span>
+                        Add Product
+                    </button> -->
+                </div>
+                <div class="nav-header">
+                    <div class="header">
+                        <p class="title">{{ header }}</p>
+                        <!-- <div>
+                            <input type="search">
+                        </div> -->
+                        <p class="lable">This is an example, short and descriptive</p>
+                    </div>
+                    <div class="inputs">
+                        <button>
+                            +
+                        </button>
+                        <input type="search" placeholder="Search in nest">
+
                     </div>
                 </div>
 
-                <div class="right">
-                    <div class="metric-card">
-                        <span class="lable">Price Drops</span>
-                        <p class="value">2</p>
-                    </div>
-                    <div class="metric-card">
-                        <span class="lable">On Sale</span>
-                        <p class="value">4</p>
-                    </div>
-                    <div class="metric-card">
-                        <span class="lable">Products</span>
-                        <p class="value">20</p>
-                    </div>
-                </div>
 
+
+                <!-- <div class="navigation">
+                    <ul>
+                        <li>
+                            <a href="/" class="active">
+                                <span class="icon"></span>
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/favorites">
+                                <span class="icon"></span>
+                                Products
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                <span class="icon"></span>
+                                Groups
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                <span class="icon"></span>
+                                Apps
+                            </a>
+                        </li>
+                    </ul>
+                </div> -->
             </div>
+
+            <div class="nav-main-right">
+                <!-- <div class="metric-card">
+                    <div class="row">
+                        <span class="lable">Changes (24h)</span>
+                    </div>
+                    <div class="row">
+                        <p class="value">8</p>
+                    </div>
+                </div> -->
+
+                <!-- <div class="metric-card">
+                    <div class="row">
+                        <span class="lable">Deals</span>
+                    </div>
+                    <div class="row">
+                        <p class="value">12</p>
+                    </div>
+                </div> -->
+
+                <!-- <div class="metric-card">
+                    <div class="row">
+                        <span class="lable">Products</span>
+                    </div>
+                    <div class="row">
+                        <p class="value">23</p>
+                        <button class="btn">
+                            +
+                        </button>
+                    </div>
+                </div> -->
+
+                <div class="metric-card wide">
+                    <div class="row">
+                        <span class="lable">Pinned Product</span>
+                    </div>
+                    <div class="row">
+                        <div class="prod">
+                            <img src="https://pricespy-75b8.kxcdn.com/product/standard/800/14365071.jpg" alt="Test"
+                                class="prod-img">
+
+                            <div class="prod-info">
+                                <p class="prod-name">
+                                    Gigabyte GeForce RTX 5080 WINDFORCE OC SFF 16GB
+                                </p>
+                                <div class="prod-values">
+                                    <p class="prod-status"><span>●</span>In stock</p>
+
+                                    <div class="prod-price-values">
+                                        <!-- <span class="prod-deal">
+                                            Sale
+                                        </span> -->
+                                        <!-- <p class="prod-price before">17 669 kr</p> -->
+                                        <p class="prod-price">16 499 kr</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="metric-card wide">
+                    <div class="row">
+                        <span class="lable">Best Deal</span>
+                    </div>
+                    <div class="row">
+                        <div class="prod">
+                            <img src="https://pricespy-75b8.kxcdn.com/product/standard/800/13504252.jpg" alt="Test"
+                                class="prod-img">
+
+                            <div class="prod-info">
+                                <p class="prod-name">
+                                    Nutribullet Pro 907
+                                </p>
+                                <div class="prod-values">
+                                    <p class="prod-status"><span>●</span>In stock</p>
+
+                                    <div class="prod-price-values">
+                                        <span class="prod-deal">
+                                            Sale
+                                        </span>
+                                        <p class="prod-price before">1 599 kr</p>
+                                        <p class="prod-price">849 kr</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
 
 

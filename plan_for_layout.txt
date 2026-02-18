@@ -4,7 +4,7 @@ Home (dashboard like):
 ideas (prod):
  - resently visited / most visited
  - on sale
- - watchlist
+ - watchlist / watchlist changes
  - price changes / price drops (24h)
 
 ideas (graphs):

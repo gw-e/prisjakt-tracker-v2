@@ -1,53 +1,29 @@
-#homepage .section {
+.metric-cards {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
-    background-color: #111;
+}
+
+.metric-cards .card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
     padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: solid 1px rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+
+    width: 100%;
+    /* min-width: 100px; */
 }
 
-#homepage .section-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-#homepage .section-header span {
-    height: 14px;
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-#homepage-left {
-    flex-grow: 7;
-}
-
-#homepage-left .top {
+.page-section {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    border-bottom: solid 1px #333;
-}
 
-#homepage-left .card-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-#homepage-left .bottom {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    /* border-top: solid 1px #333; */
-}
-
-#homepage-right {
-    flex-grow: 3;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: solid 1px rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
 }

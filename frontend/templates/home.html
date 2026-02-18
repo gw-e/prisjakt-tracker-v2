@@ -2,200 +2,24 @@
 
 {% block content %}
 
-<div class="page">
-    <!-- <div>
-        <p>hehe</p>
-    </div> -->
-
-</div>
-<!-- <div class="page" id="homepage">
-    <div class="section" id="homepage-left">
-        <div class="top">
-            <div class="card-header">
-                <p class="section-header">
-                    <span>▾</span>
-                    Watchlist
-                </p>
-            </div>
-
-            <div class="card-container">
-
-            </div>
+<div class="page" id="home-page">
+    <div class="metric-cards">
+        <div class="card">
+            <p>hehe</p>
         </div>
-        <div class="bottom">
-            <div class="card-header">
-                <p class="section-header">
-                    <span>▴</span>
-                    Deals
-                </p>
-            </div>
-
-            <div class="card-container">
-
-            </div>
+        <div class="card">
+            <p>hehe</p>
         </div>
-
-    </div>
-    <div class="section" id="homepage-right">
-        <p class="section-header">Sån firkanter med forskjellige farger, (graf ish)</p>
-    </div>
-
-</div> -->
-
-
-
-
-
-
-
-
-<!-- another design - no -->
-
-<!-- <div class="content">
-    <div class="top-content">
-        <h2 style="margin: 0; font-weight: 500;">Dashboard</h2>
-    </div>
-
-    <div class="content-cards">
-        <div class="metric-card">
-            <span class="metric-card-icon">
-
-            </span>
-            <div class="metric-card-info">
-                <span class="metric-card-lable">Price Drops</span>
-                <p class="metric-card-data">42</p>
-            </div>
+        <div class="card">
+            <p>hehe</p>
         </div>
-        <div class="metric-card">
-            <span class="metric-card-icon">
-
-            </span>
-            <div class="metric-card-info">
-                <span class="metric-card-lable">Wachlist</span>
-                <p class="metric-card-data">42</p>
-            </div>
-        </div>
-        <div class="metric-card">
-            <span class="metric-card-icon">
-
-            </span>
-            <div class="metric-card-info">
-                <span class="metric-card-lable">On Sale</span>
-                <p class="metric-card-data">42</p>
-            </div>
-        </div>
-        <div class="metric-card">
-            <span class="metric-card-icon">
-
-            </span>
-            <div class="metric-card-info">
-                <span class="metric-card-lable">Total Tracked</span>
-                <p class="metric-card-data">42</p>
-            </div>
-        </div>
-    </div>
-
-    <div style="display: flex; gap: 1rem; flex-grow: 1;">
-        <div class="content-main">
-            <div class="content-main-top">
-                <p>Price drops</p>
-            </div>
-            {% if products %}
-            <div class="main-products-container">
-                {% for prod in products %}
-                <div class="main-product-card">
-                    <div class="main-product-info">
-                        <img src="{{ prod.img }}" alt="{{ prod.name }}" class="product-img">
-                        <p style="font-size: 14px; font-weight: 500;">{{ prod.name }}</p>
-                    </div>
-                    <div>
-                        <p>{{ prod.price }},-</p>
-
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            {% else %}
-            <p>No products</p>
-            {% endif %}
-        </div>
-
-
-
-        <div class="content-main">
+        <div class="card">
             <p>hehe</p>
         </div>
     </div>
+    <div class="page-section">
 
-
-
-    <div class="content-main">
-        <p>hehe</p>
-    </div> -->
-
-
-
-<!-- <div class="content-card">
-        <div class="content-card-top">
-            <span style="font-weight: 500;">Products</span>
-        </div>
-        {% if products %}
-        <div class="product-card-container">
-            {% for prod in products %}
-            <div class="product-card">
-                <div class="prod-info-left">
-                    <img src="{{ prod.img }}" alt="{{ prod.name }}"
-                        style="width: 50px; height: 50px; border-radius: 0.5rem;">
-                    <div>
-                        <h4 style="margin: 0; font-weight: 500;">{{ prod.name }}</h4>
-                        <span>
-                            Updated 4h ago
-                        </span>
-                    </div>
-
-                </div>
-                <div class="prod-info-right">
-                    <h4 style="margin: 0; font-weight: 500;">{{ prod.price }}kr -2%</h4>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
-
-    </div> -->
-
-<!-- <div class="content-section">
-        {% if products %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Sale</th>
-                    <th>Discount</th>
-                    <th>Stock</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                {% for product in products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>{{ product.sale }}</td>
-                    <td>{{ product.discount }}</td>
-                    <td>{{ product.stock }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% else %}
-        <p>No products yet.</p>
-        {% endif %}
-    </div> -->
-
-
-
+    </div>
 </div>
 
 

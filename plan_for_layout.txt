@@ -1,4 +1,19 @@
-navigation:
-- home (dashboard like)
-- products
-- groups
+LAYOUT:
+
+Home (dashboard like):
+ideas (prod):
+ - resently visited / most visited
+ - on sale
+ - watchlist
+ - price changes / price drops (24h)
+
+ideas (graphs):
+ - 
+
+
+Products (list of all products):
+
+Groups (all groups and their products):
+
+Apps (All applications):
+f.ex:

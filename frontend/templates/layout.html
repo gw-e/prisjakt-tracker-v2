@@ -13,71 +13,108 @@
 <body>
     <div id="blur">
         <nav>
-            <div class="nav-main">
+            <div id="nav-box">
                 <div class="nav-logo">
                     <p class="logo">
                         <span class="icon">0o</span>
-                        ProdNest
+                        <!-- Prodnest -->
+                        Prodnest
                     </p>
                     <span class="hide-icon">🡠</span>
                 </div>
 
-                <input type="search" id="nav-quick-search" placeholder="Quick Search">
+                <div class="nav-main">
+                    <!-- <input type="search" id="nav-quick-search" placeholder="Quick Search"> -->
 
-                <div class="navigation">
+                    <div class="navigation">
+                        <ul>
+                            <li>
+                                <a href="/" class="active">
+                                    <span class="icon"></span>
+                                    <span class="lable">Home</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" class="">
+                                    <span class="icon"></span>
+                                    <span class="lable">Products</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" class="">
+                                    <span class="icon"></span>
+                                    <span class="lable">Watchlist</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" class="">
+                                    <span class="icon"></span>
+                                    <span class="lable">Groups</span>
+                                    <span class="icon r">v</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" class="">
+                                    <span class="icon"></span>
+                                    <span class="lable">Apps</span>
+                                    <span class="icon r">v</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="bottom">
+                            <li>
+                                <a href="/" class="">
+                                    <span class="icon"></span>
+                                    <span class="lable">Notifications</span>
+                                    <span class="icon r">27</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/" class="">
+                                    <span class="icon"></span>
+                                    <span class="lable">Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-bottom">
+                        <button class="add-product-btn">
+                            <span class="icon">+</span>
+                            Add Product
+                        </button>
+                        <a href="https://www.prisjakt.no/" target="_blank" class="nav-prisjakt">
+                            <div class="prisjakt">
+                                <img src="https://pricespy-75b8.kxcdn.com/g/rfe/logos/logo_v2_symbol.png" alt="prisjakt"
+                                    class="logo">
+                                <p class="lable">
+                                    Prisjakt
+                                    <span>https://www.prisjakt.no</span>
+                                </p>
+                            </div>
+                            <span class="icon">
+
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <!-- <div class="nav-bottom">
                     <ul>
                         <li>
-                            <a href="/" class="active">
+                            <a href="/">
                                 <span class="icon"></span>
-                                <span class="lable">Home</span>
+                                <span class="lable">Notifications</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/" class="">
+                            <a href="/">
                                 <span class="icon"></span>
-                                <span class="lable">Products</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" class="">
-                                <span class="icon"></span>
-                                <span class="lable">Watchlist</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" class="">
-                                <span class="icon"></span>
-                                <span class="lable">Groups</span>
-                                <span class="icon r">v</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/" class="">
-                                <span class="icon"></span>
-                                <span class="lable">Apps</span>
-                                <span class="icon r">v</span>
+                                <span class="lable">Settings</span>
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
-            <div class="nav-bottom">
-                <ul>
-                    <li>
-                        <a href="/">
-                            <span class="icon"></span>
-                            <span class="lable">Notifications</span>
-                            <!-- <span class="icon">25</span> -->
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/">
-                            <span class="icon"></span>
-                            <span class="lable">Settings</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
         </nav>
         <main>
             {% block content %}{% endblock %}

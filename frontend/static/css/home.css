@@ -10,7 +10,7 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(8, 8, 10, 0.4);
     border: solid 1px rgba(255, 255, 255, 0.1);
     border-radius: 0.5rem;
 
@@ -23,7 +23,7 @@
     flex-direction: column;
     flex-grow: 1;
 
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(8, 8, 10, 0.4);
     border: solid 1px rgba(255, 255, 255, 0.1);
     border-radius: 0.5rem;
 }

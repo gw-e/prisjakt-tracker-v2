@@ -9,23 +9,17 @@ body {
     margin: 0;
     font-family: Google Sans;
     color: white;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(8, 8, 10);
     /* background-color: white; */
 
     /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiDxqG7XCXj7EE0dZNWYGgmpgGPyV-Sr64NQ&s'); */
-    background-image: url('https://rare-gallery.com/mocahbig/54866-Abstract-Swirl-HD-Wallpaper.jpg');
+    /* background-image: url('https://rare-gallery.com/mocahbig/54866-Abstract-Swirl-HD-Wallpaper.jpg');
     background-image: url('https://i.pinimg.com/736x/9c/26/bb/9c26bb6f453f9b03393f20717a072fb5.jpg');
     background-image: url('https://www.hdwallpapers.in/download/purple_blue_wavy_motion_art_pattern_dark_background_abstraction_4k_hd_abstract-HD.jpg');
     background-image: url('https://4kwallpapers.com/images/wallpapers/waves-purple-3840x2160-11757.png');
-    background-image: url('https://wallpapers.com/images/hd/blue-and-purple-qiaobqjvr3kc3twc.jpg');
+    background-image: url('https://wallpapers.com/images/hd/blue-and-purple-qiaobqjvr3kc3twc.jpg'); */
 
     background-image: url('https://img.freepik.com/free-vector/dark-wavy-background_23-2148410279.jpg?semt=ais_wordcount_boost&w=740&q=80');
-    /* background-image: url('https://awesomewallpaper.files.wordpress.com/2012/10/teq.jpg'); */
-    /* background-image: url('https://awesomewallpapersblog.com/wp-content/uploads/2017/03/1920x1200-2.png'); */
-    /* background-image: url('https://images5.alphacoders.com/367/thumb-1920-367028.jpg'); */
-    /* background-image: url('https://images.unsplash.com/photo-1673526759317-be71a1243e3d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDM5fHx8ZW58MHx8fHx8'); */
-
-    /* background-image: url('https://4kwallpapers.com/images/wallpapers/waves-purple-3840x2160-11757.png'); */
 
     background-position: center;
     background-size: cover;
@@ -39,7 +33,7 @@ body {
 
     /* padding: 1rem; */
 
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(8, 8, 10, 0.75);
 
     /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8) 15%, transparent 60%); */
     /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)); */

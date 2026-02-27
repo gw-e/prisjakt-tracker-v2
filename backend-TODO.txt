@@ -1,0 +1,2 @@
+- have the "add product" endpoint also do scrapting (pass down product url instead of dict)
+- change properties from array of strings to array of objects.

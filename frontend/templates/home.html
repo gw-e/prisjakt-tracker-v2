@@ -2,228 +2,26 @@
 
 {% block content %}
 
-<div class="page" id="home-page">
-    <!-- <div class="page-left"> -->
-    <div class="metric-cards">
-        <div class="card">
-            <div class="icon">
-                T
-            </div>
-            <div class="card-info">
-                <p class="lable">Total Products</p>
-                <p class="value">36</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="icon">
-                O
-            </div>
-            <div class="card-info">
-                <p class="lable">Ongoing Deals</p>
-                <p class="value">6</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="icon">
-                P
-            </div>
-            <div class="card-info">
-                <p class="lable">Price Drops</p>
-                <p class="value">22</p>
-                <!-- <p class="lable">-15% avg.</p> -->
-            </div>
-        </div>
-        <div class="card">
-            <div class="icon">
-                W
-            </div>
-            <div class="card-info">
-                <p class="lable">Watchlist Changes</p>
-                <p class="value">1</p>
-                <!-- <p class="lable">-9% avg. per drop</p> -->
-            </div>
-        </div>
+<div class="page" id="page-home">
 
-
-    </div>
-    <div class="content-select">
-        <ul>
-            <li class="active">
-                Products
-            </li>
-            <li class="">
-                Deals
-            </li>
-
-            <!-- <li class="">
-                Changes
-            </li> -->
-
-            <li class="">
-                Watchlist
-            </li>
-            <li class="">
-                Popular
-            </li>
-            <li class="">
-                Last viewed
-            </li>
-        </ul>
-        <div>
-            <p></p>
+    <div class="page-row">
+        <div class="page-card">
+            <p>hehe</p>
         </div>
+        <div class="page-card">
+            <p>hehe</p>
+        </div>
+        <!-- <div class="page-card">
+            <p>hehe</p>
+        </div> -->
+        <!-- <div class="page-card">
+            <p>hehe</p>
+        </div> -->
     </div>
 
-    <div class="selected-content">
-        <table>
-            <thead>
-                <tr>
-                    <!-- <th class="middle" style="padding-right: 1rem;">12</th> -->
-                    <!-- above is a checkbox. if you click this, the selected product wil show up on a graph below -->
-                    <th>Product</th>
-                    <!-- <th>Store</th> -->
-                    <th>Stock</th>
-                    <th class="middle">Discount</th>
-                    <th class="right">Price (NOK)</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <!-- <td style="width: 0;"><input type="checkbox" class="prod-select"></td> -->
-                    <td>
-                        <span class="product">
-                            <img src="https://pricespy-75b8.kxcdn.com/product/standard/800/14365071.jpg" alt="Name">
-                            <span class="prod">
-                                <a href="/" class="name">Gigabyte GeForce RTX 5080 WINDFORCE OC SFF 16GB</a>
-                                <span class="properties">NVIDIA GeForce, NVIDIA GeForce RTX 5080, 16GB, GDDR7</span>
-                            </span>
-                        </span>
-                    </td>
-                    <!-- <td>
-                        <div class="prod-state">
-                            <button class="prod-options-btn">&#8943;</button>
-                            <button class="prod-options-btn">&#8943;</button>
-                        </div>
-                    </td> -->
-                    <!-- <td>Komplett</td> -->
-                    <td>
-                        <div class="status">
-                            <span class="status-dot">●</span>
-                            <p class="status-value">in stock</p>
-                        </div>
-                    </td>
-
-                    <td class="middle"><span class="prod-empty">-</span></td>
-                    <td class="right"><span class="prod-price">14 990 kr</span>
-                    </td>
-                    <!-- <td>
-                        <div class="prod-options">
-                            <button class="prod-options-btn">&#8943;</button>
-                        </div>
-
-                    </td> -->
-                    <td class="right" style="width: 0;">
-                        <div class="prod-options">
-                            <button class="prod-options-btn">&#8943;</button>
-                            <!-- <button class="prod-options-btn">&#8943;</button> -->
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <!-- <td style="width: 0;"><input type="checkbox" class="prod-select"></td> -->
-                    <td>
-                        <span class="product">
-                            <img src="https://pricespy-75b8.kxcdn.com/product/standard/800/13504252.jpg" alt="Name">
-                            <span class="prod">
-                                <a href="/" class="name">NutriBullet Pro 907</a>
-                                <span class="properties">Bærbar & smoothieblender, 907 W, Puls/turbomodus, Isknuser, 0.9
-                                    liter</span>
-                            </span>
-                        </span>
-                    </td>
-                    <!-- <td>
-                        <div class="prod-state">
-                            <button class="prod-options-btn">&#8943;</button>
-                        </div>
-                    </td> -->
-                    <!-- <td>Komplett</td> -->
-                    <td>
-                        <div class="status">
-                            <span class="status-dot">●</span>
-                            <p class="status-value">in stock</p>
-                        </div>
-                    </td>
-
-                    <td class="middle"><span class="prod-discount">-25%</span></td>
-                    <td class="right"><span class="prod-price"><span class="before">1 290 kr<br></span>849 kr</span>
-                    </td>
-                    <!-- <td>
-                        <div class="prod-options">
-                            <button class="prod-options-btn">&#8943;</button>
-                        </div>
-
-                    </td> -->
-                    <td class="right" style="width: 0;">
-                        <div class="prod-options">
-                            <button class="prod-options-btn">&#8943;</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <!-- <td style="width: 0;"><input type="checkbox" class="prod-select"></td> -->
-                    <td>
-                        <span class="product">
-                            <img src="https://pricespy-75b8.kxcdn.com/product/standard/800/13949822.jpg" alt="Name">
-                            <span class="prod">
-                                <a href="/" class="name">Asus 27" ROG Strix XG27ACDNG OLED QHD 360 Hz</a>
-                                <span class="properties">2560x1440 (WQHD), 27 Tommer, OLED, 360 Hz</span>
-                            </span>
-                        </span>
-                    </td>
-                    <!-- <td>
-                        <div class="prod-state">
-                            <button class="prod-options-btn">&#8943;</button>
-                        </div>
-
-                    </td> -->
-                    <!-- <td>Komplett</td> -->
-                    <td>
-                        <div class="status">
-                            <span class="status-dot">●</span>
-                            <p class="status-value">in stock</p>
-                        </div>
-                    </td>
-
-                    <td class="middle"><span class="prod-empty">-</span></td>
-                    <td class="right"><span class="prod-price">9 295 kr</span></td>
-                    <!-- <td>
-                        <div class="prod-options">
-                            <button class="prod-options-btn">&#8943;</button>
-                        </div>
-
-                    </td> -->
-                    <td class="right" style="width: 0;">
-                        <div class="prod-options">
-                            <button class="prod-options-btn">&#8943;</button>
-                        </div>
-                    </td>
-                </tr>
-
-
-            </tbody>
-        </table>
+    <div class="page-card">
+        <p>hehe</p>
     </div>
-
-    <div class="selected-graph">
-        <p>
-            Add a td with squears that can indicate if muted, watchlisted or added to group etc.
-            also maby think more about stock status, if that is going to only be a sircle after or under name in product
-            or a seperate column.
-        </p>
-
-    </div>
-
 </div>
 
 

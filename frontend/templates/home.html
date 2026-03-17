@@ -9,9 +9,6 @@
 
             <!-- <p class="header">Home</p> -->
         </div>
-
-
-
         <div class="actions">
             <button class="main-notification-btn">
                 <span class="icon">🔔︎</span>
@@ -47,7 +44,7 @@
                     <span class="icon blue">P</span>
                     <div class="info">
                         <p class="lable">Total Products</p>
-                        <p class="value">1 525</p>
+                        <p class="value">{{ products|length }}</p>
                     </div>
                 </div>
 
@@ -87,34 +84,41 @@
 
             <div class="card-wrap">
                 <div class="card-row product-cards">
+                    {% for prod in products %}
+                    {% if prod.favorite %}
                     <a href="https://www.prisjakt.no/product.php?p=14365071" target="_blank" class="card product-card">
                         <div class="prod-img">
                             <div class="img-wrapper">
                                 <!-- <span class="test">-15%</span> -->
-                                <img src="https://pricespy-75b8.kxcdn.com/product/standard/800/14365071.jpg"
-                                    alt="product name">
+                                <img src="{{ prod.img }}" alt="product name">
                             </div>
                         </div>
                         <div class="prod-info">
                             <div class="prod-row">
                                 <p class="prod-group">
-                                    PC-deler
+                                    Group
                                 </p>
                             </div>
                             <div class="prod-row flex">
-                                <p class="prod-name">Gigabyte GeForce RTX 5080 WINDFORCE OC SFF 16GB</p>
+                                <p class="prod-name">{{ prod.name }}</p>
                             </div>
-                            <div class="prod-row">
-                                <!-- <p class="prod-properties">NVIDIA GeForce, NVIDIA GeForce RTX 5080, 16GB, GDDR7</p> -->
-                                <p class="prod-properties">NVIDIA GeForce, NVIDIA ...</p>
-                            </div>
-                            <div class="prod-row">
-                                <!-- <span class="prod-deal">-15%</span> -->
+                            <div class="prod-row row">
                                 <p class="prod-price">
                                     <span class="lable">for</span>
-                                    <span class="price">14 990 kr</span>
+
+                                    {% if prod.sale %}
+                                    <span class="price sale">
+                                        {{ prod.price }} kr
+                                    </span>
+                                    {% else %}
+                                    <span class="price">
+                                        {{ prod.price }} kr
+                                    </span>
+                                    {% endif %}
                                 </p>
-                                <!-- <span class="prod-deal">-15%</span> -->
+                                {% if prod.sale %}
+                                <span class="prod-deal">-{{ prod.discount }}%</span>
+                                {% endif %}
                             </div>
                             <div class="prod-row row">
                                 <p class="prod-stock">
@@ -125,44 +129,8 @@
                             </div>
                         </div>
                     </a>
-
-
-                    <a href="https://www.prisjakt.no/product.php?p=13949822" target="_blank" class="card product-card">
-                        <div class="prod-img">
-                            <div class="img-wrapper">
-                                <!-- <span class="test">15%</span> -->
-                                <img src="https://pricespy-75b8.kxcdn.com/product/standard/280/13949822.jpg"
-                                    alt="product name">
-                            </div>
-                        </div>
-                        <div class="prod-info">
-                            <div class="prod-row">
-                                <p class="prod-group">
-                                    Skjermkort
-                                </p>
-                            </div>
-                            <div class="prod-row flex">
-                                <p class="prod-name">Asus 27" ROG Strix XG27ACDNG OLED QHD 360 Hz</p>
-                            </div>
-                            <div class="prod-row">
-                                <!-- <p class="prod-properties">2560x1440 (WQHD), 27 Tommer, OLED, 360 Hz</p> -->
-                                <p class="prod-properties">2560x1440 (WQHD), 27 To...</p>
-                            </div>
-                            <div class="prod-row">
-                                <p class="prod-price">
-                                    <span class="lable">for</span>
-                                    <span class="price">9 295 kr</span>
-                                </p>
-                            </div>
-                            <div class="prod-row row">
-                                <p class="prod-stock">
-                                    <!-- <span class="lable">at</span> -->
-                                    Komplett
-                                    <span class="stores">+4 stores</span>
-                                </p>
-                            </div>
-                        </div>
-                    </a>
+                    {% endif %}
+                    {% endfor %}
                 </div>
                 <div class="card graph">
                     <p>Graph for watchlist</p>
@@ -186,34 +154,33 @@
             </div>
 
             <div class="card-row product-cards">
-                <a href="https://www.prisjakt.no/product.php?p=13504252" target="_blank" class="card product-card">
+                {% for prod in products %}
+                {% if prod.sale %}
+                <a href="https://www.prisjakt.no/product.php?p=14365071" target="_blank" class="card product-card">
                     <div class="prod-img">
                         <div class="img-wrapper">
-                            <!-- <span class="test">15%</span> -->
-                            <img src="https://pricespy-75b8.kxcdn.com/product/standard/800/13504252.jpg"
-                                alt="product name">
+                            <!-- <span class="test">-15%</span> -->
+                            <img src="{{ prod.img }}" alt="product name">
                         </div>
                     </div>
                     <div class="prod-info">
                         <div class="prod-row">
                             <p class="prod-group">
-                                Skjermkort
+                                Group
                             </p>
                         </div>
                         <div class="prod-row flex">
-                            <p class="prod-name">NutriBullet Pro 907</p>
-                        </div>
-                        <div class="prod-row">
-                            <p class="prod-properties">Bærbar & smoothieblender ...</p>
+                            <p class="prod-name">{{ prod.name }}</p>
                         </div>
                         <div class="prod-row row">
-                            <!-- <span class="prod-deal">-5%</span> -->
                             <p class="prod-price">
                                 <span class="lable">for</span>
-                                <span class="price sale">849 kr</span>
-                                <!-- <span class="lable line-through">1 200 kr</span> -->
+
+                                <span class="price sale">
+                                    {{ prod.price }} kr
+                                </span>
                             </p>
-                            <span class="prod-deal">-5%</span>
+                            <span class="prod-deal">-{{ prod.discount }}%</span>
                         </div>
                         <div class="prod-row row">
                             <p class="prod-stock">
@@ -224,6 +191,8 @@
                         </div>
                     </div>
                 </a>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
 
@@ -233,38 +202,45 @@
 
         <div class="page-row">
             <div class="page-row-header">
-                <p class="header">Price Drops (24h) ??? // Last visited</p>
+                <p class="header">Recently Added</p>
             </div>
 
             <div class="card-row product-cards">
+
+                {% for prod in products %}
                 <a href="https://www.prisjakt.no/product.php?p=14365071" target="_blank" class="card product-card">
                     <div class="prod-img">
                         <div class="img-wrapper">
                             <!-- <span class="test">-15%</span> -->
-                            <img src="https://pricespy-75b8.kxcdn.com/product/standard/800/14365071.jpg"
-                                alt="product name">
+                            <img src="{{ prod.img }}" alt="product name">
                         </div>
                     </div>
                     <div class="prod-info">
                         <div class="prod-row">
                             <p class="prod-group">
-                                PC-deler
+                                Group
                             </p>
                         </div>
                         <div class="prod-row flex">
-                            <p class="prod-name">Gigabyte GeForce RTX 5080 WINDFORCE OC SFF 16GB</p>
+                            <p class="prod-name">{{ prod.name }}</p>
                         </div>
-                        <div class="prod-row">
-                            <!-- <p class="prod-properties">NVIDIA GeForce, NVIDIA GeForce RTX 5080, 16GB, GDDR7</p> -->
-                            <p class="prod-properties">NVIDIA GeForce, NVIDIA ...</p>
-                        </div>
-                        <div class="prod-row">
-                            <!-- <span class="prod-deal">-15%</span> -->
+                        <div class="prod-row row">
                             <p class="prod-price">
                                 <span class="lable">for</span>
-                                <span class="price">14 990 kr</span>
+
+                                {% if prod.sale %}
+                                <span class="price sale">
+                                    {{ prod.price }} kr
+                                </span>
+                                {% else %}
+                                <span class="price">
+                                    {{ prod.price }} kr
+                                </span>
+                                {% endif %}
                             </p>
-                            <!-- <span class="prod-deal">-15%</span> -->
+                            {% if prod.sale %}
+                            <span class="prod-deal">-{{ prod.discount }}%</span>
+                            {% endif %}
                         </div>
                         <div class="prod-row row">
                             <p class="prod-stock">
@@ -275,214 +251,7 @@
                         </div>
                     </div>
                 </a>
-
-
-                <a href="https://www.prisjakt.no/product.php?p=13504252" target="_blank" class="card product-card">
-                    <div class="prod-img">
-                        <div class="img-wrapper">
-                            <!-- <span class="test">Sale</span> -->
-                            <img src="https://pricespy-75b8.kxcdn.com/product/standard/800/13504252.jpg"
-                                alt="product name">
-                        </div>
-                    </div>
-                    <div class="prod-info">
-                        <div class="prod-row">
-                            <p class="prod-group">
-                                Skjermkort
-                            </p>
-                        </div>
-                        <div class="prod-row flex">
-                            <p class="prod-name">NutriBullet Pro 907</p>
-                        </div>
-                        <div class="prod-row">
-                            <!-- <p class="prod-properties">Bærbar & smoothieblender, 907 W, Puls/turbomodus, Isknuser, 0.9 liter
-                        </p> -->
-                            <p class="prod-properties">Bærbar & smoothieblender ...</p>
-                        </div>
-                        <div class="prod-row row">
-                            <!-- <span class="prod-deal">-5%</span> -->
-                            <p class="prod-price">
-                                <span class="lable">for</span>
-                                <span class="price sale">849 kr</span>
-                                <!-- <span class="lable line-through">1 200 kr</span> -->
-                            </p>
-                            <span class="prod-deal">-5%</span>
-                        </div>
-                        <div class="prod-row row">
-                            <p class="prod-stock">
-                                <!-- <span class="lable">at</span> -->
-                                Komplett
-                                <span class="stores">+4 stores</span>
-                            </p>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://www.prisjakt.no/product.php?p=13949822" target="_blank" class="card product-card">
-                    <div class="prod-img">
-                        <div class="img-wrapper">
-                            <!-- <span class="test">15%</span> -->
-                            <img src="https://pricespy-75b8.kxcdn.com/product/standard/280/13949822.jpg"
-                                alt="product name">
-                        </div>
-                    </div>
-                    <div class="prod-info">
-                        <div class="prod-row">
-                            <p class="prod-group">
-                                Skjermkort
-                            </p>
-                        </div>
-                        <div class="prod-row flex">
-                            <p class="prod-name">Asus 27" ROG Strix XG27ACDNG OLED QHD 360 Hz</p>
-                        </div>
-                        <div class="prod-row">
-                            <!-- <p class="prod-properties">2560x1440 (WQHD), 27 Tommer, OLED, 360 Hz</p> -->
-                            <p class="prod-properties">2560x1440 (WQHD), 27 To...</p>
-                        </div>
-                        <div class="prod-row">
-                            <p class="prod-price">
-                                <span class="lable">for</span>
-                                <span class="price">9 295 kr</span>
-                            </p>
-                        </div>
-                        <div class="prod-row row">
-                            <p class="prod-stock">
-                                <!-- <span class="lable">at</span> -->
-                                Komplett
-                                <span class="stores">+4 stores</span>
-                            </p>
-                        </div>
-                    </div>
-                </a>
-
-
-
-
-
-
-
-
-
-
-
-
-                <a href="https://www.prisjakt.no/product.php?p=14365071" target="_blank" class="card product-card">
-                    <div class="prod-img">
-                        <div class="img-wrapper">
-                            <!-- <span class="test">-15%</span> -->
-                            <img src="https://pricespy-75b8.kxcdn.com/product/standard/800/14365071.jpg"
-                                alt="product name">
-                        </div>
-                    </div>
-                    <div class="prod-info">
-                        <div class="prod-row">
-                            <p class="prod-group">
-                                PC-deler
-                            </p>
-                        </div>
-                        <div class="prod-row flex">
-                            <p class="prod-name">Gigabyte GeForce RTX 5080 WINDFORCE OC SFF 16GB</p>
-                        </div>
-                        <div class="prod-row">
-                            <!-- <p class="prod-properties">NVIDIA GeForce, NVIDIA GeForce RTX 5080, 16GB, GDDR7</p> -->
-                            <p class="prod-properties">NVIDIA GeForce, NVIDIA ...</p>
-                        </div>
-                        <div class="prod-row">
-                            <!-- <span class="prod-deal">-15%</span> -->
-                            <p class="prod-price">
-                                <span class="lable">for</span>
-                                <span class="price">14 990 kr</span>
-                            </p>
-                            <!-- <span class="prod-deal">-15%</span> -->
-                        </div>
-                        <div class="prod-row row">
-                            <p class="prod-stock">
-                                <!-- <span class="lable">at</span> -->
-                                Komplett
-                                <span class="stores">+4 stores</span>
-                            </p>
-                        </div>
-                    </div>
-                </a>
-
-
-                <a href="https://www.prisjakt.no/product.php?p=13504252" target="_blank" class="card product-card">
-                    <div class="prod-img">
-                        <div class="img-wrapper">
-                            <!-- <span class="test">Sale</span> -->
-                            <img src="https://pricespy-75b8.kxcdn.com/product/standard/800/13504252.jpg"
-                                alt="product name">
-                        </div>
-                    </div>
-                    <div class="prod-info">
-                        <div class="prod-row">
-                            <p class="prod-group">
-                                Skjermkort
-                            </p>
-                        </div>
-                        <div class="prod-row flex">
-                            <p class="prod-name">NutriBullet Pro 907</p>
-                        </div>
-                        <div class="prod-row">
-                            <!-- <p class="prod-properties">Bærbar & smoothieblender, 907 W, Puls/turbomodus, Isknuser, 0.9 liter
-                        </p> -->
-                            <p class="prod-properties">Bærbar & smoothieblender ...</p>
-                        </div>
-                        <div class="prod-row row">
-                            <!-- <span class="prod-deal">-5%</span> -->
-                            <p class="prod-price">
-                                <span class="lable">for</span>
-                                <span class="price sale">849 kr</span>
-                                <!-- <span class="lable line-through">1 200 kr</span> -->
-                            </p>
-                            <span class="prod-deal">-5%</span>
-                        </div>
-                        <div class="prod-row row">
-                            <p class="prod-stock">
-                                <!-- <span class="lable">at</span> -->
-                                Komplett
-                                <span class="stores">+4 stores</span>
-                            </p>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="https://www.prisjakt.no/product.php?p=13949822" target="_blank" class="card product-card">
-                    <div class="prod-img">
-                        <div class="img-wrapper">
-                            <!-- <span class="test">15%</span> -->
-                            <img src="https://pricespy-75b8.kxcdn.com/product/standard/280/13949822.jpg"
-                                alt="product name">
-                        </div>
-                    </div>
-                    <div class="prod-info">
-                        <div class="prod-row">
-                            <p class="prod-group">
-                                Skjermkort
-                            </p>
-                        </div>
-                        <div class="prod-row flex">
-                            <p class="prod-name">Asus 27" ROG Strix XG27ACDNG OLED QHD 360 Hz</p>
-                        </div>
-                        <div class="prod-row">
-                            <!-- <p class="prod-properties">2560x1440 (WQHD), 27 Tommer, OLED, 360 Hz</p> -->
-                            <p class="prod-properties">2560x1440 (WQHD), 27 To...</p>
-                        </div>
-                        <div class="prod-row">
-                            <p class="prod-price">
-                                <span class="lable">for</span>
-                                <span class="price">9 295 kr</span>
-                            </p>
-                        </div>
-                        <div class="prod-row row">
-                            <p class="prod-stock">
-                                <!-- <span class="lable">at</span> -->
-                                Komplett
-                                <span class="stores">+4 stores</span>
-                            </p>
-                        </div>
-                    </div>
-                </a>
+                {% endfor %}
             </div>
         </div>
 

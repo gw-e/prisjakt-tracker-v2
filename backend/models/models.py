@@ -16,6 +16,30 @@ class Product(BaseModel):
     last_updated: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     favorite: Optional[bool] = False
 
+
+# class Product(BaseModel):
+#     id: int
+#     name: str
+    
+#     img: Optional[str]
+#     url: str
+#     properties: Optional[str]
+
+#     price: Optional[int]
+#     sale: bool
+#     discount: Optional[int]
+
+#     current_store: Optional[str] = None
+#     stock: Optional[str]
+#     stores: Optional[int] = 0
+    
+#     last_updated: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+#     added: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+#     watchlist: Optional[bool] = False
+
+
+
 class Price_log(BaseModel):
     prod_id: int
     price: Optional[int]

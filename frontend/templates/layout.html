@@ -11,6 +11,51 @@
 </head>
 
 <body>
+    <nav class="">
+        <div class="nav-logo center">
+            <div class="logo">
+                <span class="icon">0o</span>
+            </div>
+        </div>
+        <div class="nav-main">
+            <div class="mini-navigation">
+                <ul>
+                    <li>
+                        <a href="/" class="active">
+                            <span class="icon"></span>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" class="">
+                            <span class="icon"></span>
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" class="">
+                            <span class="icon"></span>
+                            Groups
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" class="">
+                            <span class="icon"></span>
+                            Tools
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" class="">
+                            <span class="icon"></span>
+                            Options
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
     <nav class="hide">
         <div class="nav-logo">
             <div class="logo">
@@ -29,7 +74,7 @@
                     <li>
                         <a href="/" class="active">
                             <span class="icon"></span>
-                            <span class="lable">Dashboard</span>
+                            <span class="lable">Home</span>
                         </a>
                     </li>
                     <li>
@@ -126,11 +171,12 @@
     <main>
         <div class="page-header">
             <div class="actions left">
-                <button class="main-menu-btn">
+                <button class="main-menu-btn hide">
                     <span class="icon">☰</span>
                 </button>
-                <!-- <input type="search" placeholder="Search product" class="main-prod-search nobc"> -->
-                <p class="header">Home Dashboard</p>
+                <!-- <input type="text" placeholder="Search product" class="main-prod-search nobc"> -->
+
+                <p class="header">Home</p>
             </div>
 
 
@@ -139,27 +185,55 @@
                 <button class="main-notification-btn">
                     <span class="icon">🔔︎</span>
                 </button>
-                <button class="main-add-prod-btn">
+                <!-- <button class="main-add-prod-btn">
                     <span class="icon">&#65291;</span>
-                </button>
+                </button> -->
                 <button class="main-search-btn">
                     <span class="icon">&#8981;</span>
                 </button>
-
-
-
-
-                <!-- <span class="spacing"></span> -->
-                <!-- <input type="search" placeholder="Search" class="main-prod-search"> -->
-
-
-
-
-
             </div>
-
         </div>
+
+        <div class="add-btn-container">
+            <button class="add-btn">+</button>
+        </div>
+
+
+
         {% block content %}{% endblock %}
+
+        <!-- Home, Products, Groups, Tools -->
+        <div class="page-mobile-nav hide">
+            <div class="mobile-navigation">
+                <ul>
+                    <li>
+                        <a href="/" class="active">
+                            <span class="icon"></span>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" class="">
+                            <span class="icon"></span>
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" class="">
+                            <span class="icon"></span>
+                            Groups
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" class="">
+                            <span class="icon"></span>
+                            More
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <span class="space"></span>
+        </div>
     </main>
 
 

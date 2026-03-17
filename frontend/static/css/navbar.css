@@ -9,6 +9,12 @@ nav {
     background-color: black;
 }
 
+@media screen and (max-width: 600px) {
+    nav {
+        display: none;
+    }
+}
+
 nav.hide {
     display: none;
 }

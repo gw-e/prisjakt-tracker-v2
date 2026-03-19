@@ -13,20 +13,41 @@
             <button class="main-notification-btn">
                 <span class="icon">🔔︎</span>
             </button>
-            <button class="main-settings-btn">
+            <!-- <button class="main-settings-btn">
                 <span class="icon">⚙</span>
-            </button>
+            </button> -->
             <!-- <button class="main-add-prod-btn">
                     <span class="icon">&#65291;</span>
                 </button> -->
-            <!-- <button class="main-search-btn">
+            <button class="main-search-btn">
                 <span class="icon">&#8981;</span>
-            </button> -->
+            </button>
         </div>
     </div>
 </div>
 
 <div class="add-btn-container">
+    <div class="add-prod-card">
+        <form action="/v3/product/add" method="post">
+            <div class="section">
+                <div class="section-row">
+                    <p class="header">Add Product</p>
+                    <a href="https://www.prisjakt.no" class="prisjakt-link">Center this</a>
+                </div>
+
+
+                <div class="input-box">
+                    <label for="product-url-input">Product URL</label>
+                    <input type="text" placeholder="https://www.prisjakt.no/product..." id="product-url-input"
+                        name="url" required>
+                </div>
+
+            </div>
+            <div class="section">
+                <button type="submit" class="btn">Add Product</button>
+            </div>
+        </form>
+    </div>
     <button class="add-btn">+</button>
 </div>
 
@@ -49,7 +70,7 @@
                 </div>
 
                 <div class="card metric-card">
-                    <span class="icon red">D</span>
+                    <span class="icon red">%</span>
                     <div class="info">
                         <p class="lable">Ongoing Deals</p>
                         <p class="value">25</p>
@@ -59,7 +80,7 @@
                 <div class="card metric-card">
                     <span class="icon green">$</span>
                     <div class="info">
-                        <p class="lable">Drops Today</p>
+                        <p class="lable">Under Price Trend</p>
                         <p class="value">15</p>
                     </div>
                 </div>
@@ -86,7 +107,7 @@
                 <div class="card-row product-cards">
                     {% for prod in products %}
                     {% if prod.favorite %}
-                    <a href="https://www.prisjakt.no/product.php?p=14365071" target="_blank" class="card product-card">
+                    <a href="{{ prod.url }}" target="_blank" class="card product-card">
                         <div class="prod-img">
                             <div class="img-wrapper">
                                 <!-- <span class="test">-15%</span> -->
@@ -102,29 +123,36 @@
                             <div class="prod-row flex">
                                 <p class="prod-name">{{ prod.name }}</p>
                             </div>
-                            <div class="prod-row row">
+                            {% if prod.sale %}
+                            <div class="prod-row">
+                                <span class="prod-deal">-{{ prod.stores[0].discount_percent }}%</span>
                                 <p class="prod-price">
                                     <span class="lable">for</span>
 
-                                    {% if prod.sale %}
                                     <span class="price sale">
                                         {{ prod.price }} kr
                                     </span>
-                                    {% else %}
+                                    <span class="lable line-through">
+                                        {{ prod.stores[0].original_price }} kr
+                                    </span>
+                                </p>
+                            </div>
+                            {% else %}
+                            <div class="prod-row">
+                                <p class="prod-price">
+                                    <span class="lable">for</span>
                                     <span class="price">
                                         {{ prod.price }} kr
                                     </span>
-                                    {% endif %}
                                 </p>
-                                {% if prod.sale %}
-                                <span class="prod-deal">-{{ prod.discount }}%</span>
-                                {% endif %}
                             </div>
+                            {% endif %}
                             <div class="prod-row row">
                                 <p class="prod-stock">
                                     <!-- <span class="lable">at</span> -->
-                                    Komplett
-                                    <span class="stores">+4 stores</span>
+
+                                    {{ prod.stores[0].store }}
+                                    <span class="stores">+{{ prod.stores|length - 1 }} stores</span>
                                 </p>
                             </div>
                         </div>
@@ -132,9 +160,9 @@
                     {% endif %}
                     {% endfor %}
                 </div>
-                <div class="card graph">
+                <!-- <div class="card graph">
                     <p>Graph for watchlist</p>
-                </div>
+                </div> -->
             </div>
 
         </div>
@@ -156,7 +184,7 @@
             <div class="card-row product-cards">
                 {% for prod in products %}
                 {% if prod.sale %}
-                <a href="https://www.prisjakt.no/product.php?p=14365071" target="_blank" class="card product-card">
+                <a href="{{ prod.url }}" target="_blank" class="card product-card">
                     <div class="prod-img">
                         <div class="img-wrapper">
                             <!-- <span class="test">-15%</span> -->
@@ -172,21 +200,24 @@
                         <div class="prod-row flex">
                             <p class="prod-name">{{ prod.name }}</p>
                         </div>
-                        <div class="prod-row row">
+                        <div class="prod-row">
+                            <span class="prod-deal">-{{ prod.stores[0].discount_percent }}%</span>
                             <p class="prod-price">
                                 <span class="lable">for</span>
 
                                 <span class="price sale">
                                     {{ prod.price }} kr
                                 </span>
+                                <span class="lable line-through">
+                                    {{ prod.stores[0].original_price }} kr
+                                </span>
                             </p>
-                            <span class="prod-deal">-{{ prod.discount }}%</span>
                         </div>
                         <div class="prod-row row">
                             <p class="prod-stock">
                                 <!-- <span class="lable">at</span> -->
-                                Komplett
-                                <span class="stores">+4 stores</span>
+                                {{ prod.stores[0].store }}
+                                <span class="stores">+{{ prod.stores|length - 1 }} stores</span>
                             </p>
                         </div>
                     </div>
@@ -208,7 +239,7 @@
             <div class="card-row product-cards">
 
                 {% for prod in products %}
-                <a href="https://www.prisjakt.no/product.php?p=14365071" target="_blank" class="card product-card">
+                <a href="{{ prod.url }}" target="_blank" class="card product-card">
                     <div class="prod-img">
                         <div class="img-wrapper">
                             <!-- <span class="test">-15%</span> -->
@@ -224,29 +255,35 @@
                         <div class="prod-row flex">
                             <p class="prod-name">{{ prod.name }}</p>
                         </div>
-                        <div class="prod-row row">
+                        {% if prod.sale %}
+                        <div class="prod-row">
+                            <span class="prod-deal">-{{ prod.stores[0].discount_percent }}%</span>
                             <p class="prod-price">
                                 <span class="lable">for</span>
 
-                                {% if prod.sale %}
                                 <span class="price sale">
                                     {{ prod.price }} kr
                                 </span>
-                                {% else %}
+                                <span class="lable line-through">
+                                    {{ prod.stores[0].original_price }} kr
+                                </span>
+                            </p>
+                        </div>
+                        {% else %}
+                        <div class="prod-row">
+                            <p class="prod-price">
+                                <span class="lable">for</span>
                                 <span class="price">
                                     {{ prod.price }} kr
                                 </span>
-                                {% endif %}
                             </p>
-                            {% if prod.sale %}
-                            <span class="prod-deal">-{{ prod.discount }}%</span>
-                            {% endif %}
                         </div>
+                        {% endif %}
                         <div class="prod-row row">
                             <p class="prod-stock">
                                 <!-- <span class="lable">at</span> -->
-                                Komplett
-                                <span class="stores">+4 stores</span>
+                                {{ prod.stores[0].store }}
+                                <span class="stores">+{{ prod.stores|length - 1 }} stores</span>
                             </p>
                         </div>
                     </div>

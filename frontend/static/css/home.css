@@ -244,6 +244,7 @@
 .product-card .prod-name {
     font-size: 14px;
     font-weight: 500;
+    margin-bottom: 0.2rem;
 }
 
 .product-card .prod-properties {
@@ -275,7 +276,8 @@
 
 .product-card .prod-price .price {
     font-size: 16px;
-    padding-right: 4px;
+    padding-right: 0.2rem;
+    /* padding-right: 4px; */
     /* padding: 0 2px; */
     font-weight: bold;
     color: #fff;

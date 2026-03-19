@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Query, Depends, Path, Body, Request
+from fastapi import FastAPI, HTTPException, Query, Depends, Path, Body, Request, Form
 from scrapers.scraper import scrape_product
 from scrapers.scraper_v2 import scrape_v2
 from models.models import Product, Price_log, Group
@@ -10,6 +10,8 @@ import asyncio
 from datetime import datetime, timezone
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse
+from starlette.status import HTTP_303_SEE_OTHER
 from contextlib import asynccontextmanager
 
 
@@ -122,6 +124,68 @@ async def add_product(product: Product):
         "message": "Product added successfully",
         "inserted_id": str(result)
     }
+
+
+@app.post("/v2/product/add")
+async def add_product(add_data: dict):
+    if not "url" in add_data:
+        raise HTTPException(status_code=422, detail="Missing url!")
+    
+    url = add_data["url"]
+    scraped = await scrape_product_v2(url)
+    if not scraped:
+        raise HTTPException(status_code=500, detail="Couldn't scrape product!")
+    
+    product = Product(**scraped)
+
+    existing_product = await db.get_product_by_id(product.id)
+
+    if existing_product:
+        raise HTTPException(status_code=409, detail="Product already added!")
+    
+    product_data = product.model_dump()
+    result = await db.insert_product(product_data)
+
+    price_log = Price_log(
+        prod_id=product.id,
+        price=product.price,
+        sale=product.sale,
+        current_store=product.stores[0]["store"] if len(product.stores) != 0 else None
+    )
+    await db.insert_price_log(price_log.model_dump())
+
+    return {
+        "message": "Product added successfully",
+        "inserted_id": str(result),
+        "product_id": product.id
+    }
+
+
+@app.post("/v3/product/add")
+async def add_product(request: Request, url: str = Form(...)):
+    scraped = await scrape_product_v2(url)
+    if not scraped:
+        raise HTTPException(status_code=500, detail="Couldn't scrape product!")
+    
+    product = Product(**scraped)
+
+    existing_product = await db.get_product_by_id(product.id)
+    if existing_product:
+        raise HTTPException(status_code=409, detail="Product already added!")
+    
+    # product_data = product.model_dump()
+    result = await db.insert_product(product.model_dump())
+
+    price_log = Price_log(
+        prod_id=product.id,
+        price=product.price,
+        sale=product.sale,
+        current_store=product.stores[0]["store"] if len(product.stores) != 0 else None
+    )
+    await db.insert_price_log(price_log.model_dump())
+
+    referer = request.headers.get("referer", "/")
+    return RedirectResponse(url=referer, status_code=HTTP_303_SEE_OTHER)
 
 
 @app.put("/v1/product/update/{prod_id}")

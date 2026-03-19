@@ -2,31 +2,23 @@
 
 {% block content %}
 
-<div class="page-header">
+<!-- <div class="page-header">
     <div class="page-header-wrapper">
         <div class="actions left">
             <input type="text" placeholder="Search product" class="main-prod-search nobc">
-
-            <!-- <p class="header">Home</p> -->
         </div>
         <div class="actions">
             <button class="main-notification-btn">
                 <span class="icon">🔔︎</span>
             </button>
-            <!-- <button class="main-settings-btn">
-                <span class="icon">⚙</span>
-            </button> -->
-            <!-- <button class="main-add-prod-btn">
-                    <span class="icon">&#65291;</span>
-                </button> -->
             <button class="main-search-btn">
                 <span class="icon">&#8981;</span>
             </button>
         </div>
     </div>
-</div>
+</div> -->
 
-<div class="add-btn-container">
+<!-- <div class="add-btn-container">
     <div class="add-prod-card">
         <form action="/v3/product/add" method="post">
             <div class="section">
@@ -49,12 +41,11 @@
         </form>
     </div>
     <button class="add-btn">+</button>
-</div>
+</div> -->
 
 
 <div class="page-scroll">
     <div class="page" id="page-home">
-
         <div class="page-row">
             <div class="page-row-header">
                 <p class="header">Metrics</p>
@@ -65,7 +56,7 @@
                     <span class="icon blue">P</span>
                     <div class="info">
                         <p class="lable">Total Products</p>
-                        <p class="value">{{ products|length }}</p>
+                        <p class="value">{{ products | length }}</p>
                     </div>
                 </div>
 
@@ -73,24 +64,24 @@
                     <span class="icon red">%</span>
                     <div class="info">
                         <p class="lable">Ongoing Deals</p>
-                        <p class="value">25</p>
+                        <p class="value">{{ products | selectattr('sale') | list | length }}</p>
                     </div>
                 </div>
-
+                <div class="card metric-card">
+                    <span class="icon gray">🔔︎</span>
+                    <div class="info">
+                        <p class="lable">Watchlist</p>
+                        <p class="value">{{ products | selectattr('favorite') | list | length }}</p>
+                    </div>
+                </div>
                 <div class="card metric-card">
                     <span class="icon green">$</span>
                     <div class="info">
-                        <p class="lable">Under Price Trend</p>
+                        <p class="lable">Price Drops Today</p>
                         <p class="value">15</p>
                     </div>
                 </div>
-                <div class="card metric-card">
-                    <span class="icon gray">O</span>
-                    <div class="info">
-                        <p class="lable">Watchlist Drops</p>
-                        <p class="value">0</p>
-                    </div>
-                </div>
+
 
             </div>
         </div>

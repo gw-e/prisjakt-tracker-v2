@@ -38,27 +38,27 @@ app.mount(
 )
 
 @app.get("/")
-async def on_load(request: Request):
+async def on_load():
+    return RedirectResponse(url="/home", status_code=HTTP_303_SEE_OTHER)
+
+@app.get("/home")
+async def page_home(request: Request):
     products = await db.get_all_products()
     return template.TemplateResponse(
         "home.html", 
         {
             "request": request,
-            "header": "Nest Overview",
             "products": products,
         }
     )
 
-
-@app.get("/favorites")
-async def favorites(request: Request):
-    products = await db.get_favorite_products()
+@app.get("/add-product")
+async def page_add_product(request: Request):
     return template.TemplateResponse(
-        "favorites.html",
+        "add-product.html",
         {
             "request": request,
-            "header": "All Products",
-            "products": products,
+            "header": "Add Product",
         }
     )
 

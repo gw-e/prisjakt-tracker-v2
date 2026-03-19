@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title or "Prodnest - Your nest for smarter buying" }}</title>
     <link rel="stylesheet" href="{{ url_for('static', path='css/layout.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', path='css/home.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/home.css') }}">
+
 </head>
 
 <body>
@@ -41,13 +42,13 @@
                     <li>
                         <a href="/" class="">
                             <span class="icon"></span>
-                            Tools
+                            Changes
                         </a>
                     </li>
                     <li>
                         <a href="/" class="">
                             <span class="icon"></span>
-                            Options
+                            More
                         </a>
                     </li>
                 </ul>
@@ -169,6 +170,59 @@
         </div>
     </nav>
     <main>
+        <div class="page-header">
+            <div class="page-header-wrapper">
+                <div class="header-row">
+                    {% if title %}
+                    <p class="title">{{ title }}</p>
+
+                    {% elif header %}
+                    <button onclick="history.back()">></button>
+                    <p class="header">{{ header }}</p>
+
+                    {% elif search %}
+                    <button onclick="history.back()">></button>
+                    <input type="text" placeholder="Quick Search" class="main-prod-search nobc">
+
+                    {% else %}
+                    <input type="text" placeholder="Quick Search" class="main-prod-search nobc">
+                    {% endif %}
+                </div>
+
+
+
+
+                <div class="actions">
+                    {% if not header or title %}
+                    <button class="main-notification-btn">
+                        <span class="icon">🔔︎</span>
+                    </button>
+                    <button class="main-add-prod-btn">
+                        <span class="icon">&#65291;</span>
+                    </button>
+                    <div class="main-dropdown" id="add-btn-dropdown">
+                        <ul class="dropdown">
+                            <li>
+                                <a href="/add-product">
+                                    <span class="icon"></span>
+                                    Product
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/">
+                                    <span class="icon"></span>
+                                    Group
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+
+
+            </div>
+        </div>
+
         {% block content %}{% endblock %}
 
         <div class="page-mobile-nav hide">
@@ -195,12 +249,18 @@
                     <li>
                         <a href="/" class="">
                             <span class="icon"></span>
+                            Price Log
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" class="">
+                            <span class="icon"></span>
                             More
                         </a>
                     </li>
                 </ul>
             </div>
-            <span class="space"></span>
+            <!-- <span class="space"></span> -->
         </div>
     </main>
 
